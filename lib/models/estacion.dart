@@ -27,12 +27,14 @@ class Estacion extends ObjetoSuperEstacion{
     map['e_simbolo'] = simbolo;
     map['l_id_e'] = lineaId;
     map['ubicacion_l'] = ubicacionEnLinea;
+    map['e_lat'] = latitud.toString();
+    map['e_long'] = longitud.toString();
 
     return map;
   }
 
   //Convierte Objeto tipo Map -> ObjetoEstacion
-  //Hay que crear un constructor que cree el objeto apartir del mapa en la DB
+  //Hay que crear un constructor que cree el objeto a partir del mapa en la DB
   Estacion.fromMapObject(Map<String, dynamic> map){
 
     this.id = map['e_id'];
@@ -40,5 +42,7 @@ class Estacion extends ObjetoSuperEstacion{
     this.simbolo = map['e_simbolo'];
     this.lineaId = map['l_id_e'];
     this.ubicacionEnLinea = map['ubicacion_l'];
+    this.latitud = double.parse(map['e_lat']);
+    this.longitud = double.parse(map['e_long']);
   }
 }

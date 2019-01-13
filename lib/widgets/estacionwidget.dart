@@ -22,9 +22,10 @@ class EstacionWidget extends StatelessWidget{
   static const String simboloAuxiliar = 'graphics/sistemas/';
 
   final ObjetoSuperEstacion estacion;
-  ///Constructor con valores por
+  //Constructor
   EstacionWidget(this.estacion);
-  ///Genera el widget toucheable con los datos de la estacion.
+
+  //Genera el widget toucheable con los datos de la estacion.
   @override
   Widget build(BuildContext context) {
     return InkWell( //Inkwell permite el onTap
@@ -40,7 +41,6 @@ class EstacionWidget extends StatelessWidget{
           horizontal: 8.0,
         ),
         child: Row( //Row para ordenar el contenedor
-          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Image.asset( //Imagen, muestra el simbolo de la estacion
               estacion.simbolo,
@@ -52,6 +52,7 @@ class EstacionWidget extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(estacion.nombre, style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('Lat: ${estacion.latitud} Long: ${estacion.longitud}',),
                 ],
               ),
             )

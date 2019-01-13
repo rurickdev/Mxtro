@@ -5,12 +5,16 @@ class ObjetoSuperEstacion{
   String _simbolo;
   String _lineaId;
   int _ubicacionEnLinea;
+  double _latitud;
+  double _longitud;
 
   String get id => _id;
   String get nombre => _nombre;
   String get simbolo => _simbolo;
   String get lineaId => _lineaId;
   int get ubicacionEnLinea => _ubicacionEnLinea;
+  double get latitud => _latitud;
+  double get longitud=> _longitud;
 
   set id (String newId){
     this._id = newId;
@@ -27,9 +31,10 @@ class ObjetoSuperEstacion{
   set ubicacionEnLinea (int newUbicacion){
     this._ubicacionEnLinea = newUbicacion;
   }
-
-  String dameNombre(){
-    String cadena = nombre +' '+ simbolo +' '+ lineaId +' '+ubicacionEnLinea.toString();
-    return cadena;
+  set latitud (double newLatitud){
+    this._latitud = newLatitud;
+  }
+  set longitud (double newLongitud){
+    this._longitud = newLongitud;
   }
 }

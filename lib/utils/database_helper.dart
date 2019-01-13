@@ -41,7 +41,7 @@ class DatabaseHelper{
   Future<Database> inicializarDB() async{
     //obtener el directorio donde esta la DB
     var dbPath = await getDatabasesPath();
-    var path = join(dbPath, 'metro_from_asset.db');
+    var path = join(dbPath, 'metro_3_from_asset.db');
 
     //Intenta abrir la DB si ya existe en almacenamiento
     try{
@@ -55,7 +55,7 @@ class DatabaseHelper{
       print('Creando copia desde asset');
 
       //proceso de copiado
-      ByteData data = await rootBundle.load(join('assets', 'metro_1.db'));
+      ByteData data = await rootBundle.load(join('assets', 'metro_3.db'));
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await new File(path).writeAsBytes(bytes);
 
@@ -87,7 +87,7 @@ class DatabaseHelper{
     return resultados;
 
   }
-  //Transbordo - Linea
+  //Correspondencia
   Future<List<Map<String, dynamic>>> getListaMapCorrespondencia() async{
 
     Database dataBase = await this._db;

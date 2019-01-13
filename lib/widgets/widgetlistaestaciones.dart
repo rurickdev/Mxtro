@@ -86,6 +86,8 @@ class _ListaEstacionesTabState extends State<ListaEstacionesTabWidget>{
                     if (transbordo.id == correspondencia.transIdLin){
                       if (correspondencia.linIdTrans == linea.id){
                         correspondencia.nombre = transbordo.nombre;
+                        correspondencia.latitud = transbordo.latitud;
+                        correspondencia.longitud = transbordo.longitud;
                         correspondencia.lineaId = linea.id;
                         correspondencia.simbolo = transbordo.simbolo;
                         linea.setTransbordo(correspondencia);
@@ -184,7 +186,7 @@ class _ListaEstacionesTabState extends State<ListaEstacionesTabWidget>{
         ),
       ),
       sliver: SliverFixedExtentList(
-        itemExtent: 60.0,
+        itemExtent: 70.0,
         delegate: SliverChildListDelegate(crearListaWidEstLinActual(linea)),
       ),
     );
