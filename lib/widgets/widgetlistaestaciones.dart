@@ -186,7 +186,7 @@ class _ListaEstacionesTabState extends State<ListaEstacionesTabWidget>{
         ),
       ),
       sliver: SliverFixedExtentList(
-        itemExtent: 70.0,
+        itemExtent: 65.0,
         delegate: SliverChildListDelegate(crearListaWidEstLinActual(linea)),
       ),
     );
@@ -195,7 +195,7 @@ class _ListaEstacionesTabState extends State<ListaEstacionesTabWidget>{
     List<EstacionWidget> listaWidgetsLinActual = [];
 
     for(int i=0; i<lineaLocal.getNumeroEstaciones(); i++){
-      listaWidgetsLinActual.add(EstacionWidget(lineaLocal.listaEstacionTransbordos[i]));
+      listaWidgetsLinActual.add(EstacionWidget(lineaLocal.listaEstacionTransbordos[i], linea: lineaLocal,));
     }
 
     return listaWidgetsLinActual;

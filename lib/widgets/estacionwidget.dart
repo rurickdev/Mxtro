@@ -15,15 +15,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:metroapp/screens/estacionscreen.dart';
-import 'package:metroapp/models/objetosuperestacion.dart';
+import 'package:metroapp/models/index.dart';
 
 class EstacionWidget extends StatelessWidget{
 
   static const String simboloAuxiliar = 'graphics/sistemas/';
 
   final ObjetoSuperEstacion estacion;
+  final Linea linea;
+
   //Constructor
-  EstacionWidget(this.estacion);
+  //ToDo: recibir la pura linea y un numero, trabajar con la estacion en esa posicion
+  EstacionWidget(this.estacion, {this.linea});
 
   //Genera el widget toucheable con los datos de la estacion.
   @override
@@ -32,7 +35,7 @@ class EstacionWidget extends StatelessWidget{
       onTap: (){
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EstacionScreen(estacion: estacion,)),
+          MaterialPageRoute(builder: (context) => EstacionScreen(estacion: estacion, linea: linea,)),
         );
       },
       child: Container( //Contenedor para contener los subwidgets
@@ -52,7 +55,6 @@ class EstacionWidget extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(estacion.nombre, style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text('Lat: ${estacion.latitud} Long: ${estacion.longitud}',),
                 ],
               ),
             )
