@@ -14,14 +14,14 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import '../../utils/metro_app_font_icons.dart';
+import '../../models/sistema.dart';
+import '../../models/superestacion.dart';
 import '../widgets/system_info_widget.dart';
 import '../widgets/lineas_estaciones_widget.dart';
 import '../widgets/mi_drawer_widget.dart';
 import '../widgets/mi_app_bar_widget.dart';
 import '../widgets/news_widget.dart';
-import '../../utils/metro_app_font_icons.dart';
-import '../../models/sistema.dart';
-import '../../models/superestacion.dart';
 
 class SistemaScreen extends StatefulWidget{
 

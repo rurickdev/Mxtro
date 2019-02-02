@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:metroapp/models/index.dart';
+import '../../models/index.dart';
 
 class EstacionInfoWidget extends StatelessWidget{
 

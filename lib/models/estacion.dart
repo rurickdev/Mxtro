@@ -8,7 +8,7 @@
 ///   ubicacionEnLinea: marca su posicion en la lista de estaciones de la linea
 ///
 
-import 'package:metroapp/models/superestacion.dart';
+import 'superestacion.dart';
 
 class Estacion extends SuperEstacion{
 

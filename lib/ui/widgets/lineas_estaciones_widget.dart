@@ -18,7 +18,8 @@ class LineasEstacionesWidget extends StatelessWidget{
           return InkWell(
             child: Column(
               children: <Widget>[
-                Image.asset(sistemas[sistema].listaLineas[0].estaciones[index].simbolo, height: 70,),
+                //Image.asset(sistemas[sistema].listaLineas[0].estaciones[index].simbolo, height: 70,),
+                Placeholder(color: Color(sistemas[sistema].listaLineas[0].color),),
                 Text(sistemas[sistema].listaLineas[0].estaciones[index].nombre)
               ],
             )

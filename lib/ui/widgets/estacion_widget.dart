@@ -14,8 +14,8 @@
 ///
 
 import 'package:flutter/material.dart';
-import 'package:metroapp/ui/screens/estacion_screen.dart';
-import 'package:metroapp/models/index.dart';
+import '../screens/estacion_screen.dart';
+import '../../models/index.dart';
 import 'estacion_info_widget.dart';
 
 class EstacionWidget extends StatelessWidget{
