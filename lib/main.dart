@@ -6,7 +6,8 @@
 ///
 
 import 'package:flutter/material.dart';
-import 'package:metroapp/screens/metroscreen.dart';
+import 'ui/screens/splash_screen.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Metro App',
-      home: MetroScreen(),
+      home: SplashScreen(),
       theme: ThemeData(
+        //ToDo: Cambiar los colores segun el sistema predilecto del usuario
         primaryColor: Colors.deepOrange,
         accentColor: Colors.deepOrangeAccent,
       ),

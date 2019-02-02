@@ -1,4 +1,4 @@
-export 'objetosuperestacion.dart';
+export 'superestacion.dart';
 export 'correspondencia.dart';
 export 'estacion.dart';
 export 'transbordo.dart';
