@@ -2,62 +2,38 @@
 /// mail: rurick.mpoisot@gmail.com
 /// github: github.com/skintigth
 ///
-/// objeto Transbordo: es la abstraccion a objeto de un transbordo, consta de:
-///   id: identificador del transbordo
-///   simbolo: icono de la estacion, string al asset
-///   nombre: nombre d ela estacion, string
+/// objeto Transbordo: es la abstraccion a objeto de un transbordo.
+/// Hereda de Estacion que a su vez hereda de
 ///
 
-class Transbordo{
+import 'estacion.dart';
 
-  //Parametros
-  String _id;
-  String _nombre;
-  String _simbolo;
-  double _latitud;
-  double _longitud;
+class Transbordo extends Estacion{
 
-  //Constructores
-  Transbordo(this._nombre, this._simbolo);
-  Transbordo.conId(this._id, this._nombre, this._simbolo);
+  //Agrega un correspondencia a su mapa de correspondnecias
+  addCorrespondencia (String idLinea, int ubicacionEnLinea) => correspondencias[idLinea] = ubicacionEnLinea;
 
-  //Getters
-  String get id => _id;
-  String get nombre => _nombre;
-  String get simbolo => _simbolo;
-  double get latitud => _latitud;
-  double get longitud => _longitud;
+  //Regresa true si existe la correspondencia con X linea
+  bool tieneCorrespondencia (String idLinea) => correspondencias.containsKey(idLinea);
 
-  //Setters
-  set id (String newId){
-    this._id = newId;
-  }
-  set nombre (String newNombre){
-    this._nombre = newNombre;
-  }
-  set simbolo (String newSimbolo){
-    this._simbolo = newSimbolo;
-  }
-  set latitud (double newLatitud){
-    this._latitud = newLatitud;
-  }
-  set longitud (double newLongitud){
-    this._longitud = newLongitud;
-  }
+  //Regresa su posicion en la linea que se pide
+  getUbicacionEnLinea (String idLinea) => correspondencias[idLinea];
 
   //Convertir el ObjetoTransbordo -> Objeto tipo Map
+  @override
   Map<String, dynamic> toMap(){
 
     var map = Map<String, dynamic>();
 
     //[if] para comprobar si el ID ya existe en la DB
-    if ( _id != null){
-      map['t_id'] = _id;
+    if ( id != null){
+      map['t_id'] = id;
     }
-    map['t_nombre'] = _nombre;
-    map['t_simbolo'] = _simbolo;
+    map['t_nombre'] = nombre;
+    map['t_simbolo'] = simbolo;
     map['t_lat'] = latitud.toString();
     map['t_long'] = longitud.toString();
+    map['t_map_id'] = mapsId;
 
     return map;
   }
@@ -65,11 +41,12 @@ class Transbordo{
   //Convertir el objeto tipo Map -> ObjetoTransbordo
   //Se crea un constructor que constrira el objeto a partir del mapa en la DB
   Transbordo.fromMapObject(Map<String, dynamic> map){
-
-    this._id = map['t_id'];
-    this._nombre = map['t_nombre'];
-    this._simbolo = map['t_simbolo'];
+    this.id = map['t_id'];
+    this.nombre = map['t_nombre'];
+    this.simbolo = map['t_simbolo'];
     this.latitud = double.parse(map['t_lat']);
     this.longitud = double.parse(map['t_long']);
+    this.mapsId = map['t_map_id'];
   }
+
 }

@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 //ToDo: Detallar este widget
 
-class InfoWidget extends StatelessWidget{
+class SystemInfo extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,7 +34,6 @@ class InfoWidget extends StatelessWidget{
             ),
           ),
         ),
-
         Card(
           child: Container(
             padding: EdgeInsets.all(8.0),
