@@ -6,7 +6,7 @@ import '../widgets/estacion_info_widget.dart';
 
 class SearchScreen extends StatefulWidget{
 
-  List<SuperEstacion> estaciones;
+  final List<SuperEstacion> estaciones;
 
   SearchScreen({this.estaciones});
 

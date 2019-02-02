@@ -33,7 +33,7 @@ class EstacionWidget extends StatelessWidget{
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 4.0),
         child: InkWell(
-          onTap: () => NavigateToEstacionScreen(context),
+          onTap: () => navigateToEstacionScreen(context),
           onLongPress: (){
             showModalBottomSheet(
               context: context,
@@ -41,7 +41,7 @@ class EstacionWidget extends StatelessWidget{
                 return InkWell(
                   onTap: (){
                     Navigator.pop(context);
-                    NavigateToEstacionScreen(context);
+                    navigateToEstacionScreen(context);
                   },
                   child: EstacionInfoWidget(
                     estacion: estacion,
@@ -55,7 +55,7 @@ class EstacionWidget extends StatelessWidget{
     );
   }
 
-  NavigateToEstacionScreen(context){
+  navigateToEstacionScreen(context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => EstacionScreen(estacion: estacion,)));
   }
 }

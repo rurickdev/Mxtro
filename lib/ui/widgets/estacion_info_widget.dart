@@ -3,7 +3,7 @@ import 'package:metroapp/models/index.dart';
 
 class EstacionInfoWidget extends StatelessWidget{
 
-  Estacion estacion;
+  final Estacion estacion;
 
   EstacionInfoWidget({
     @required this.estacion,
