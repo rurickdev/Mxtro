@@ -64,7 +64,11 @@ class _SistemaScreenState extends State<SistemaScreen>{
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Theme.of(context).copyWith(primaryColor: Color(sistemas[idSistema].colorPrimario), accentColor: Color(sistemas[idSistema].colorSecundario)),
+      data: Theme.of(context).copyWith(
+        primaryColor: Color(sistemas[idSistema].colorPrimario),
+        accentColor: Color(sistemas[idSistema].colorSecundario),
+        primaryTextTheme: TextTheme(title: TextStyle(color: Color(sistemas[idSistema].colorSecundario))),
+      ),
       child: Scaffold(
         //Action Bar con 2 botones, uno para buscar estaciones y otro para generar una ruta
         appBar: MiAppBar(titulo: Text(sistemas[widget.idSistema].nombre), context: context, estaciones: estaciones, sistema: sistemas[widget.idSistema],),
