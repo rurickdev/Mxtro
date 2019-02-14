@@ -26,17 +26,17 @@ class MiAppBar extends AppBar{
       onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RutaScreen())),
       //Todo: Traducir este texto
       tooltip: 'Generar Ruta',
-      color: Colors.white,
+      //color: Colors.white,
     );
   }
 
   static IconButton botonBuscar(BuildContext context, List<SuperEstacion> estaciones){
     return IconButton(
-      icon: Icon(CommunityMaterialIcons.map_search_outline),
+      icon: Icon(CommunityMaterialIcons.map_search_outline,),
       onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen(estaciones: estaciones,))),
       //Todo: Traducir este texto
       tooltip: 'Buscar Estacion',
-      color: Colors.white,
+      //color: Colors.white,
     );
   }
 
@@ -46,7 +46,7 @@ class MiAppBar extends AppBar{
       onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => TestScreen(sistema: sistema,))),
       //Todo: Traducir este texto
       tooltip: 'Funcion Experimental',
-      color: Colors.white,
+      //color: Colors.white,
     );
   }
 }
