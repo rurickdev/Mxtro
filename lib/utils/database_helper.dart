@@ -4,11 +4,11 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:metroapp/models/estacion.dart';
-import 'package:metroapp/models/transbordo.dart';
-import 'package:metroapp/models/correspondencia.dart';
-import 'package:metroapp/models/linea.dart';
-import 'package:metroapp/models/sistema.dart';
+import '../models/estacion.dart';
+import '../models/transbordo.dart';
+import '../models/correspondencia.dart';
+import '../models/linea.dart';
+import '../models/sistema.dart';
 
 class DatabaseHelper{
 
@@ -17,14 +17,14 @@ class DatabaseHelper{
   //Var de Base de datos a utilizar dentro de la App
   Database _db;
 
-  //Constructor y Fabrica del singleton para ejecutar ua sola vez
+  //Constructor y Fabrica del singleton para ejecutar una sola vez
   //Sin importar que se use la DB en otras pantallas de la App
   DatabaseHelper._crearInstancia();
 
   factory DatabaseHelper() {
 
     if (_dbHelper == null) {
-      _dbHelper= DatabaseHelper._crearInstancia();
+      _dbHelper = DatabaseHelper._crearInstancia();
     }
     return _dbHelper;
   }
@@ -41,7 +41,7 @@ class DatabaseHelper{
   Future<Database> inicializarDB() async{
     //obtener el directorio donde esta la DB
     var dbPath = await getDatabasesPath();
-    var path = join(dbPath, 'metro_3_from_asset.db');
+    var path = join(dbPath, 'metro_from_asset.db');
 
     //Intenta abrir la DB si ya existe en almacenamiento
     try{
@@ -55,7 +55,7 @@ class DatabaseHelper{
       print('Creando copia desde asset');
 
       //proceso de copiado
-      ByteData data = await rootBundle.load(join('assets', 'metro_3.db'));
+      ByteData data = await rootBundle.load(join('assets', 'metro.db'));
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await new File(path).writeAsBytes(bytes);
 
@@ -66,7 +66,7 @@ class DatabaseHelper{
     return _db;
   }
 
-  ///obtener los objetos
+  //obtener los objetos
 
   //Get Lista de Map<String, dynamic> de Objetos
   //Estaciones
@@ -91,7 +91,7 @@ class DatabaseHelper{
   Future<List<Map<String, dynamic>>> getListaMapCorrespondencia() async{
 
     Database dataBase = await this._db;
-    var resultados = await dataBase.query('trans_lin');
+    var resultados = await dataBase.query('correspondencia');
 
     return resultados;
 
@@ -114,7 +114,6 @@ class DatabaseHelper{
     return resultados;
 
   }
-
 
   //Get Lista de Objetos
   //Estaciones
@@ -143,7 +142,7 @@ class DatabaseHelper{
 
     return listaTransbordos;
   }
-  //Transbordos - Lineas
+  //Correspondencias
   Future<List<Correspondencia>> getListaCorrespondencias() async {
 
     var listaMaps = await getListaMapCorrespondencia();

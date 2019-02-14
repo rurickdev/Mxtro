@@ -2,17 +2,26 @@
 /// mail: rurick.mpoisot@gmail.com
 /// github: github.com/skintigth
 ///
-/// objeto Estacion: es la abstraccion a objeto de una estacion, consta de:
-///   id: identificador de la estacion
-///   simbolo: icono de la estacion, string al asset
-///   nombre: nombre d ela estacion, string
-///   lineaId: id de la linea a la que pertenece
+/// objeto Estacion: es la abstraccion a objeto de una estacion,
+/// hereda de SuperEstacion consta de los mismos parametros que
+/// su clase padre mas:
 ///   ubicacionEnLinea: marca su posicion en la lista de estaciones de la linea
 ///
 
-import 'package:metroapp/models/objetosuperestacion.dart';
+import 'superestacion.dart';
 
-class Estacion extends ObjetoSuperEstacion{
+class Estacion extends SuperEstacion{
+
+  int _ubicacionEnLinea;
+
+  int get ubicacionEnLinea => this._ubicacionEnLinea;
+  set ubicacionEnLinea (int newUbicacion){
+    this._ubicacionEnLinea = newUbicacion;
+  }
+
+  //Constructor unamed, necesario para poder crear un
+  //constructor nombrado en la clase transbordo
+  Estacion();
 
   //Convierte ObjetoEstacion -> Objeto tipo Map
   Map<String, dynamic> toMap(){
@@ -26,9 +35,10 @@ class Estacion extends ObjetoSuperEstacion{
     map['e_nombre'] = nombre;
     map['e_simbolo'] = simbolo;
     map['l_id_e'] = lineaId;
-    map['ubicacion_l'] = ubicacionEnLinea;
+    map['ubicacion_l'] = _ubicacionEnLinea;
     map['e_lat'] = latitud.toString();
     map['e_long'] = longitud.toString();
+    map['e_map_id'] = mapsId;
 
     return map;
   }
@@ -41,8 +51,9 @@ class Estacion extends ObjetoSuperEstacion{
     this.nombre = map['e_nombre'];
     this.simbolo = map['e_simbolo'];
     this.lineaId = map['l_id_e'];
-    this.ubicacionEnLinea = map['ubicacion_l'];
+    this._ubicacionEnLinea = map['ubicacion_l'];
     this.latitud = double.parse(map['e_lat']);
     this.longitud = double.parse(map['e_long']);
+    this.mapsId = map['e_map_id'];
   }
 }

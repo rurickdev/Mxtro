@@ -1,0 +1,124 @@
+name: metroapp
+description: Aplicacion que permitirá visualirar las rutas de los sitemas de transporte de la CDMX
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# Read more about versioning at semver.org.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Para usar SQLite en Flutter
+  sqflite: any
+  path_provider: any
+  intl: ^0.15.7
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  # Iconos Material de la comunidad
+  community_material_icon: ^2.8.94
+
+  # Para agregar los baners con los nombres de las lineas en la lista de estaciones
+  #flutter_sticky_header: ^0.3.4
+
+  # Para hacer zoom a las imagenes, necesario para los mapas
+  photo_view: ^0.1.0
+
+  #Mostrar el mapa de las lineas
+  google_maps_flutter: ^0.0.3
+  #Abrir el mapa en google maps
+  #url_launcher: ^4.0.3
+
+  # Compartir datos a otras apps
+  share: ^0.5.3
+
+  #Mostrar animaciones Flare
+  flare_flutter: ^1.2.0
+
+  #Acceder a la API de Twitter
+  #No se puede obtener el paquete, esperando actualizacion
+  #twitter: ^1.0.0
+  #Web View para mostrar feed de twitter
+  #flutter_webview_plugin: ^0.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - graphics/iconos_interfaz/
+    - graphics/iconos_switchs/
+    - graphics/sistemas/
+    - graphics/sistemas/mapas/
+    - graphics/imagenes_estaciones/metro/
+    - graphics/imagenes_estaciones/metro/linea_a/
+    - graphics/imagenes_estaciones/metro/linea_b/
+    - graphics/imagenes_estaciones/metro/linea_1/
+    - graphics/imagenes_estaciones/metro/linea_2/
+    - graphics/imagenes_estaciones/metro/linea_3/
+    - graphics/imagenes_estaciones/metro/linea_4/
+    - graphics/imagenes_estaciones/metro/linea_5/
+    - graphics/imagenes_estaciones/metro/linea_6/
+    - graphics/imagenes_estaciones/metro/linea_7/
+    - graphics/imagenes_estaciones/metro/linea_8/
+    - graphics/imagenes_estaciones/metro/linea_9/
+    - graphics/imagenes_estaciones/metro/linea_12/
+    - graphics/imagenes_estaciones/metro/transbordos/
+    # Base de Datos
+    - assets/metro.db
+    #animaciones
+    - assets/animaciones/train.flr
+  #  - images/a_dot_ham.jpeg
+
+  fonts:
+    - family:  MetroAppFont
+      fonts:
+        - asset: fonts/MetroAppFont.ttf
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.io/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.io/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.io/custom-fonts/#from-packages
