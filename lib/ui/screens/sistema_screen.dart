@@ -87,6 +87,7 @@ class _SistemaScreenState extends State<SistemaScreen>{
 
   BottomNavigationBar miBottomBar (){
 
+    //color de los iconos de la NavBar segun el color del sistema actual
     Color colorIconos;
 
     if(colorSistema == Color(0xFFFFFFFF)){
