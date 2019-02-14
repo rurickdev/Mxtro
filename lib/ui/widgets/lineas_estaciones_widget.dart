@@ -13,13 +13,14 @@ class LineasEstacionesWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     if ( sistemas[sistema].numeroLineas < 2){
       return GridView.count(
+        padding: EdgeInsets.only(top: 20),
         crossAxisCount: 3,
         children: List.generate(sistemas[sistema].listaLineas[0].estaciones.length, (index){
           return InkWell(
             child: Column(
               children: <Widget>[
                 //Image.asset(sistemas[sistema].listaLineas[0].estaciones[index].simbolo, height: 70,),
-                Placeholder(color: Color(sistemas[sistema].listaLineas[0].color),),
+                Container(width: 70, height: 70,child: Placeholder(color: Color(sistemas[sistema].listaLineas[0].color),)),
                 Text(sistemas[sistema].listaLineas[0].estaciones[index].nombre)
               ],
             )

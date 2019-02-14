@@ -28,7 +28,7 @@ dependencies:
   community_material_icon: ^2.8.94
 
   # Para agregar los baners con los nombres de las lineas en la lista de estaciones
-  flutter_sticky_header: ^0.3.4
+  #flutter_sticky_header: ^0.3.4
 
   # Para hacer zoom a las imagenes, necesario para los mapas
   photo_view: ^0.1.0
