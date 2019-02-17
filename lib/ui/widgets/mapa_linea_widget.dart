@@ -25,12 +25,10 @@ class MapaLinea extends StatelessWidget {
     }
 
     return Container(
-      height: MediaQuery.of(context).size.height/2,
       child: GoogleMap(
         options: GoogleMapOptions(
           cameraPosition: CameraPosition(
             target: coordenadas,
-            //target: LatLng(linea.estaciones[linea.estaciones.length~/2].latitud, linea.estaciones[linea.estaciones.length~/2].longitud),
             zoom: mapZoom,
           ),
         ),
@@ -39,7 +37,6 @@ class MapaLinea extends StatelessWidget {
             controller.addMarker(
               MarkerOptions(
                 position: estacion.ubiGeo,
-                //position: LatLng(estacion.latitud, estacion.longitud),
                 icon: BitmapDescriptor.fromAsset(estacion.simbolo),
               ),
             );

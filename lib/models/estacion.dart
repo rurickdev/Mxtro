@@ -23,6 +23,27 @@ class Estacion extends SuperEstacion{
   //constructor nombrado en la clase transbordo
   Estacion();
 
+  //Regresa la estacion siguiente
+  Estacion get siguiente{
+
+    //Si es la ultima regresa null
+    if(this.ubicacionEnLinea == this.linea.estaciones.length){
+      return null;
+    }
+
+    return this.linea.estaciones[this.ubicacionEnLinea];
+  }
+  //Regresa la estacion anteior
+  Estacion get anterior{
+
+    //Si es la primera regresa null
+    if(this.ubicacionEnLinea == 1){
+      return null;
+    }
+
+    return this.linea.estaciones[this.ubicacionEnLinea];
+  }
+
   //Convierte ObjetoEstacion -> Objeto tipo Map
   Map<String, dynamic> toMap(){
 
