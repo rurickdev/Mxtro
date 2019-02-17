@@ -41,7 +41,7 @@ class Estacion extends SuperEstacion{
       return null;
     }
 
-    return this.linea.estaciones[this.ubicacionEnLinea];
+    return this.linea.estaciones[this.ubicacionEnLinea-2];
   }
 
   //Convierte ObjetoEstacion -> Objeto tipo Map

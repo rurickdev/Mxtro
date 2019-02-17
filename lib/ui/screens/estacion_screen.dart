@@ -12,75 +12,6 @@ class EstacionScreen extends StatelessWidget{
 
   EstacionScreen({this.estacion});  
 
-  // List<Widget> estacionesContiguas(BuildContext context){
-
-  //   List<Widget> contiguas = [];
-
-  //   int posicion = estacion.linea.estaciones.indexOf(estacion);
-
-  //   if (posicion == 0){
-  //     contiguas.add(Row(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: <Widget>[
-  //         Container(
-  //           width: MediaQuery.of(context).size.width/3,
-  //         ),
-  //         Text('Direccion'),
-  //         Column(
-  //           children: <Widget>[
-  //             Icon(Icons.arrow_forward),
-  //             Text(estacion.linea.direccionB.nombre),
-  //           ],
-  //         ),
-  //       ],
-  //     ));
-  //     contiguas.add(ContiguaWidget(estacion.linea.estaciones[1]));
-  //     return contiguas;
-  //   }
-  //   if (posicion == estacion.linea.numeroEstaciones-1){
-  //     contiguas.add(ContiguaWidget(estacion.linea.direccionB));
-  //     contiguas.add(Row(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: <Widget>[
-  //         Column(
-  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //           children: <Widget>[
-  //             Icon(Icons.arrow_back),
-  //             Text(estacion.linea.direccionA.nombre),
-  //           ],
-  //         ),
-  //         Text('Direccion'),
-  //         Container(
-  //           width: MediaQuery.of(context).size.width/3,
-  //         ),
-  //       ],
-  //     ));
-  //     return contiguas;
-  //   }
-  //   contiguas.add(ContiguaWidget(estacion.linea.estaciones[posicion-1]));
-  //   contiguas.add(Row(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       Column(
-  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //         children: <Widget>[
-  //           Icon(Icons.arrow_back),
-  //           Text(estacion.linea.direccionA.nombre),
-  //         ],
-  //       ),
-  //       Text('Direccion'),
-  //       Column(
-  //         children: <Widget>[
-  //           Icon(Icons.arrow_forward),
-  //           Text(estacion.linea.direccionB.nombre),
-  //         ],
-  //       ),
-  //     ],
-  //   ));
-  //   contiguas.add(ContiguaWidget(estacion.linea.estaciones[posicion+1]));
-  //   return contiguas;
-  // }
-
   PageController pageController;
 
   @override
@@ -125,19 +56,4 @@ class EstacionScreen extends StatelessWidget{
       ),
     );
   }
-
-  // Column estacionesContiguasWidget(BuildContext context){
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       //ToDo: Este texto será traducido
-  //       Text('Estaciones Aledañas', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
-  //       Row(
-  //         mainAxisSize: MainAxisSize.max,
-  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //         children: estacionesContiguas(context),
-  //       ),
-  //     ],
-  //   );
-  // }
 }

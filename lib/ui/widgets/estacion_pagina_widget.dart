@@ -31,16 +31,15 @@ class EstacionesContiguas extends StatelessWidget {
   });
 
   List<Widget> llenarContiguas(BuildContext context){
-    if(siguiente != null){
-      contiguas.add(EstacionWidget(siguiente));
-      //contiguas.add(Image.asset(siguiente.simbolo));
-    }else{
-      contiguas.add(SizedBox(width: MediaQuery.of(context).size.width/4,));
-    }
 
     if(anterior != null){
       contiguas.add(EstacionWidget(anterior));
-      //contiguas.add(Image.asset(anterior.simbolo));
+    }else{
+      contiguas.add(SizedBox(width: MediaQuery.of(context).size.width/4,));
+    }
+    
+    if(siguiente != null){
+      contiguas.add(EstacionWidget(siguiente));
     }else{
       contiguas.add(SizedBox(width: MediaQuery.of(context).size.width/4,));
     }
