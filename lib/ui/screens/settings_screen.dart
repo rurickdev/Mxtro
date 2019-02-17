@@ -11,6 +11,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text('Ajustes'),
       ),
       body: Center(
+        //ToDo: Crear los widgets de los ajustes
         child: NewsWidget(),
       ),
     );

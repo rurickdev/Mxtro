@@ -12,27 +12,11 @@ class AboutScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          //ToDo: Cambiar por una foto redonda
-          Container(
-            height: 100,
-            width: 100,
-            child: Placeholder(),
-          ), 
-          Card(
-            child: Column(
-              children: <Widget>[
-                DevIcons(),
-                //ToDo: Traducir este texto
-                Text('Rurick Maqueo Poisot', style: TextStyle(fontWeight: FontWeight.bold),),
-                Text('Yo hice posible este proyecto'),
-                SizedBox(
-                  height: 8,
-                ),
-              ],
-            ),
-          ),
+          DevPic(), //ToDo: Cambiar por una foto redonda e integrar en el [DevInfoCard]
+          DevInfoCard(),
           Container(
             margin: EdgeInsets.all(16),
+            //ToDO: Agregar informacion de la aplicacion
             child: Text('Mas texto sobre la aplicaion, librerias de codigo abierto, licencia, etc...'),
           ),
         ],
@@ -41,7 +25,41 @@ class AboutScreen extends StatelessWidget {
   }
 }
 
-class DevIcons extends StatelessWidget {
+//Foto del desarrollador
+class DevPic extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return //Foto del desarrollador
+    Container(
+      height: 100,
+      width: 100,
+      child: Placeholder(),
+    );
+  }
+}
+
+//Carta con informacion del desarrollador
+class DevInfoCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          SocialIcons(),
+          //ToDo: Traducir este texto
+          Text('Rurick Maqueo Poisot', style: TextStyle(fontWeight: FontWeight.bold),),
+          Text('Yo hice posible este proyecto'),
+          SizedBox(
+            height: 8,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//Iconos de redes sociales
+class SocialIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Row(
