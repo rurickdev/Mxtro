@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../models/sistema.dart';
 import '../screens/sistema_screen.dart';
+import '../screens/about_screen.dart';
+import '../screens/settings_screen.dart';
 
 class MiDrawer extends StatelessWidget{
 
@@ -36,12 +38,12 @@ class MiDrawer extends StatelessWidget{
           ListTile(
             title: Text('Acerca de'),
             leading: Icon(Icons.info),
-            onTap: (){},
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AboutScreen())),
           ),
           ListTile(
             title: Text('Ajustes'),
             leading: Icon(Icons.settings),
-            onTap: (){},
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen())),
           ),
         ],
       ),
