@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:share/share.dart';
 import '../../models/estacion.dart';
 import '../widgets/contiguas_widget.dart';
+import '../widgets/mapa_linea_widget.dart';
 import '../widgets/estacion_info_widget.dart';
 
 //! ToDo: Hacer privada la API Key de Google Maps - Urgente
@@ -10,7 +11,7 @@ class EstacionScreen extends StatelessWidget{
 
   final Estacion estacion;
 
-  EstacionScreen({this.estacion});
+  EstacionScreen({this.estacion});  
 
   List<Widget> estacionesContiguas(BuildContext context){
 
@@ -96,69 +97,24 @@ class EstacionScreen extends StatelessWidget{
       ),
       body: Column(
         children: <Widget>[
+          //Mapa con pin de la estacion
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height/3,
-            child: mapaEstacion(),
-          ),
-          EstacionInfoWidget(
-            estacion: estacion,
+            child: MapaLinea(linea: estacion.linea, estacion: estacion,),
           ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  //ToDo: Mostrar la informacion de la estacion
-                  Text('Informacion sobre la estacion'),
-                  estacionesContiguasWidget(context),
-                ],
-              ),
+            child: PageView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: estacion.linea.estaciones.length,
+              itemBuilder: (context, index){
+                return Container(child: Text('hello $index'),
+                );
+              },
             ),
           ),
         ],
       ),
-    );
-  }
-
-  GoogleMap mapaEstacion(){
-
-    //bool pagado = false;
-
-    return GoogleMap(
-      options: GoogleMapOptions(
-        //ToDo: Convertir en opcion de pago la interaccion con el mapa
-        /*rotateGesturesEnabled: pagado,
-        scrollGesturesEnabled: pagado,
-        tiltGesturesEnabled: pagado,
-        zoomGesturesEnabled: pagado,
-        myLocationEnabled: pagado,*/
-        cameraPosition: CameraPosition(
-          target: estacion.ubiGeo,
-          //target: LatLng(estacion.latitud, estacion.longitud),
-          zoom: 5
-        ),
-      ),
-      onMapCreated: (GoogleMapController controller){
-        controller.addMarker(
-          //Marcador con el icono de la estacion
-          MarkerOptions(
-            position: estacion.ubiGeo,
-            //position: LatLng(estacion.latitud, estacion.longitud),
-            icon: BitmapDescriptor.fromAsset(estacion.simbolo),
-          ),
-        );
-        controller.animateCamera(
-          CameraUpdate.newCameraPosition(
-            CameraPosition(
-              target: estacion.ubiGeo,
-              //target: LatLng(estacion.latitud, estacion.longitud),
-              zoom: 15.5,
-            ),
-          ),
-        );
-      },
     );
   }
 
@@ -176,4 +132,6 @@ class EstacionScreen extends StatelessWidget{
       ],
     );
   }
+
+  
 }

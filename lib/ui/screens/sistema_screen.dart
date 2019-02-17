@@ -44,7 +44,7 @@ class _SistemaScreenState extends State<SistemaScreen>{
   Color colorSistemaSecundario;
 
   //indice para BottomNavigationBar
-  static int _indexElegido = 1;
+  static int _indexElegido = 0;
   //Widgets a mostrar segun el indice del BottomNavBar
   Widget body;
 
