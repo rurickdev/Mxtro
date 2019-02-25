@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import '../../models/estacion.dart';
-import '../widgets/contiguas_widget.dart';
 import '../widgets/mapa_linea_widget.dart';
 import '../widgets/estacion_pagina_widget.dart';
 
@@ -12,23 +11,29 @@ class EstacionScreen extends StatelessWidget{
 
   EstacionScreen({this.estacion});  
 
-  PageController pageController;
-
   @override
   Widget build(BuildContext context) {
 
-    pageController = PageController(
+    PageController pageController = PageController(
       initialPage: estacion.ubicacionEnLinea-1,
     );
+
+    MapaLinea mapa = MapaLinea(
+      linea: estacion.linea, 
+      estacion: estacion,
+    );
+
+    String shareText = changeShareText(estacion);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(estacion.linea.color),
-        title: Text(estacion.nombre, style: TextStyle(color: Colors.white),),
+        title: Text(estacion.linea.nombre, style: TextStyle(color: Colors.white),),
         automaticallyImplyLeading: true,
         actions: <Widget>[
+          //Boton de compartir estacion actual
           IconButton(icon: Icon(Icons.share), onPressed: (){
-            Share.share('${estacion.nombre} de la ${estacion.linea.nombre}\nhttps://www.google.com/maps/search/?api=1&query=${estacion.latitud},${estacion.longitud}&query_place_id=${estacion.mapsId}');
+            Share.share(shareText);
           }),
         ],
       ),
@@ -38,12 +43,16 @@ class EstacionScreen extends StatelessWidget{
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height/3,
-            child: MapaLinea(linea: estacion.linea, estacion: estacion,),
+            child: mapa
           ),
           Expanded(
             child: PageView.builder(
               controller: pageController,
-              onPageChanged: (indice) => print(estacion.linea.estaciones[indice]),
+              onPageChanged: (indice) {
+                mapa.actualizarCoordenadas(estacion.linea.estaciones[indice].ubiGeo,);
+                shareText = changeShareText(estacion.linea.estaciones[indice]);
+                print(estacion.linea.estaciones[indice]);
+              },
               itemCount: estacion.linea.estaciones.length,
               itemBuilder: (context, index){
                 return EstacionPagina(
@@ -55,5 +64,11 @@ class EstacionScreen extends StatelessWidget{
         ],
       ),
     );
+  }
+
+  //Actualiza el texto que compartira la aplicacion al presionar el boton "Share Estacion"
+  String changeShareText(Estacion estacionInfo){
+    return '${estacionInfo.nombre} de la ${estacionInfo.linea.nombre}\nhttps://www.google.com/maps/search/?api=1&query=${estacionInfo.latitud},${estacionInfo.longitud}&query_place_id=${estacionInfo.mapsId}';
+
   }
 }

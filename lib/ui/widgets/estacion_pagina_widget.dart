@@ -4,7 +4,7 @@ import 'estacion_widget.dart';
 
 class EstacionPagina extends StatelessWidget {
 
-  Estacion estacion;
+  final Estacion estacion;
 
   EstacionPagina({
     @required this.estacion
@@ -20,10 +20,10 @@ class EstacionPagina extends StatelessWidget {
 
 class EstacionesContiguas extends StatelessWidget {
 
-  Estacion siguiente;
-  Estacion anterior;
+  final Estacion siguiente;
+  final Estacion anterior;
 
-  List<Widget> contiguas = [];
+  final List<Widget> contiguas = [];
 
   EstacionesContiguas({
     @required this.siguiente,
@@ -37,7 +37,7 @@ class EstacionesContiguas extends StatelessWidget {
     }else{
       contiguas.add(SizedBox(width: MediaQuery.of(context).size.width/4,));
     }
-    
+
     if(siguiente != null){
       contiguas.add(EstacionWidget(siguiente));
     }else{

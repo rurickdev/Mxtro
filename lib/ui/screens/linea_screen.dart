@@ -10,12 +10,14 @@ class LineaScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(linea.color),
         title: Text(linea.nombre, style: TextStyle(color: Colors.white),),
         automaticallyImplyLeading: true,
       ),
+      // body: MapaLinea(linea: linea,estacion: linea.estaciones[linea.estaciones.length~/2],),
       body: MapaLinea(linea: linea,),
     );
   }
