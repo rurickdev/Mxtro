@@ -2,14 +2,14 @@
 /// mail: rurick.mpoisot@gmail.com
 /// github: github.com/skintigth
 ///
-/// Objeto Linea: es la abstraccion de una linea en los sistemas de transporte
+/// Objeto Linea: es la abstracción de una linea en los sistemas de transporte
 /// consiste de:
 ///   id: identificador de la linea
-///   Simbolo: simbolo para identificar rapido la linea, Icon
+///   Símbolo: símbolo para identificar rápido la linea, Icon
 ///   Nombre: el nombre de la linea, String
-///   Color: solor con el que se identifica la linea, Color
+///   Color: color con el que se identifica la linea, Color
 ///   sistemaId: id del sistema al que pertenece
-///   listaEstaciones: la lista de estaciones/transbordos que pertenecen a la estacion
+///   listaEstaciones: la lista de estaciones/transbordos que pertenecen a la estación
 ///
 
 import 'superestacion.dart';
@@ -18,8 +18,7 @@ import 'transbordo.dart';
 import 'sistema.dart';
 
 class Linea {
-
-  //Parametros
+  //Parámetros
   String _id;
   String _nombre;
   String _simbolo;
@@ -42,38 +41,42 @@ class Linea {
   int get numeroEstaciones => _listaEstaciones.length;
   //Regresa una lista con todas las estaciones de la linea
   List<SuperEstacion> get estaciones => _listaEstaciones;
-  //Regresa la primera estacion de la linea, se conoce como direccion A
+  //Regresa la primera estación de la linea, se conoce como dirección A
   SuperEstacion get direccionA => _listaEstaciones.first;
-  //Regresa la primera ultima de la linea, se conoce como direccion B
+  //Regresa la primera ultima de la linea, se conoce como dirección B
   SuperEstacion get direccionB => _listaEstaciones.last;
 
   //Setters
-  set id (String newId){
+  set id(String newId) {
     this._id = newId;
   }
-  set nombre (String newNombre){
+
+  set nombre(String newNombre) {
     this._nombre = newNombre;
   }
-  set simbolo (String newSimbolo){
+
+  set simbolo(String newSimbolo) {
     this._simbolo = 'graphics/imagenes_estaciones/' + newSimbolo;
   }
-  set color (int newColor){
+
+  set color(int newColor) {
     this._color = newColor;
   }
-  set sistemaId(String newSistemaId){
+
+  set sistemaId(String newSistemaId) {
     this._sistemaId = newSistemaId;
   }
-  set sistema(Sistema newSistema){
+
+  set sistema(Sistema newSistema) {
     this._sistema = newSistema;
   }
 
   //Convertir ObjetoLinea -> Objeto tipo Map
-  Map<String, dynamic> toMap(){
-
+  Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
 
     //[if] para comprobar si existe el id en la base de datos
-    if (_id != null){
+    if (_id != null) {
       map['l_id'] = _id;
     }
     map['l_nombre'] = _nombre;
@@ -85,8 +88,8 @@ class Linea {
   }
 
   //Convertir Objeto tipo Map -> ObjetoLinea
-  //Hay que crear el contructor que creará el objeto a partir del mapa en la DB
-  Linea.fromMapObject(Map<String, dynamic> map){
+  //Hay que crear el constructor que creará el objeto a partir del mapa en la DB
+  Linea.fromMapObject(Map<String, dynamic> map) {
     this._id = map['l_id'];
     this._nombre = map['l_nombre'];
     this._simbolo = map['l_simbolo'];
@@ -94,12 +97,11 @@ class Linea {
     this._sistemaId = map['s_id_l'];
   }
 
-  //Agrega una estacion a la lista de estaciones
+  //Agrega una estación a la lista de estaciones
   addEstacion(Estacion estacion) => this._listaEstaciones.add(estacion);
 
-  //Agrega una estacion, que recibe datos de un transbordo, a la lista de estaciones
-  addTransbordo(Transbordo transbordo){
-
+  //Agrega una estación, que recibe datos de un transbordo, a la lista de estaciones
+  addTransbordo(Transbordo transbordo) {
     Estacion est = Estacion();
     est.nombre = transbordo.nombre;
     est.lineaId = this._id;
@@ -114,18 +116,19 @@ class Linea {
     this._listaEstaciones.add(est);
   }
 
-  //Ordenas las estaciones de la linea segun su ubicacionEnLinea
-  ordenarEstaciones(){
-      int aux=0;
-      Estacion estacion;
-      while(aux!=this._listaEstaciones.length){
-        estacion = this._listaEstaciones[aux];
-        if(estacion.ubicacionEnLinea-1 == this._listaEstaciones.indexOf(estacion)){
-          aux++;
-        }else{
-          this._listaEstaciones.remove(estacion);
-          this._listaEstaciones.insert(estacion.ubicacionEnLinea-1, estacion);
-        }
+  //Ordenas las estaciones de la linea según su ubicaciónEnLinea
+  ordenarEstaciones() {
+    int aux = 0;
+    Estacion estacion;
+    while (aux != this._listaEstaciones.length) {
+      estacion = this._listaEstaciones[aux];
+      if (estacion.ubicacionEnLinea - 1 ==
+          this._listaEstaciones.indexOf(estacion)) {
+        aux++;
+      } else {
+        this._listaEstaciones.remove(estacion);
+        this._listaEstaciones.insert(estacion.ubicacionEnLinea - 1, estacion);
       }
+    }
   }
 }
