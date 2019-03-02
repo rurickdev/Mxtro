@@ -89,11 +89,10 @@ class SocialIcons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         IconButton(
-          icon: Icon(
-            CommunityMaterialIcons.twitter,
-          ),
-          onPressed: () {}),
-        ),
+            icon: Icon(
+              CommunityMaterialIcons.twitter,
+            ),
+            onPressed: () {}),
         IconButton(
           icon: Icon(
             CommunityMaterialIcons.linkedin,
