@@ -1,9 +1,9 @@
+import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 import '../models/index.dart';
 import 'database_helper.dart';
 
-class CargadorListas{
-
+class CargadorListas {
   //Lista con todas las estaciones de la DB
   List<Estacion> estaciones;
   //Lista con todas los transbordos de la DB
@@ -19,8 +19,7 @@ class CargadorListas{
 
   //Obtiene las listas de objetos de la base de datos y las copia
   //a las variables locales correspondientes
-  Future<List<Sistema>> cargarListas() async{
-
+  Future<List<Sistema>> cargarListas() async {
     //abrir DB
     final Database miDataBase = await dbHelper.inicializarDB();
 
@@ -51,20 +50,20 @@ class CargadorListas{
   }
 
   //Asignar a los transbordos sus correspondencias
-  asignarCorrespondenciasATransbordo(){
+  asignarCorrespondenciasATransbordo() {
     for (var transbordo in transbordos) {
       for (var correspondencia in correspondencias) {
         //Agrega la correspondencias al transbordo si le pertenece (su id es el mismo)
         if (transbordo.id == correspondencia.transIdLin) {
-          transbordo.addCorrespondencia(correspondencia.linIdTrans,
-              correspondencia.ubicacionEnLinea);
+          transbordo.addCorrespondencia(
+              correspondencia.linIdTrans, correspondencia.ubicacionEnLinea);
         }
       }
     }
   }
 
   //Llena las lineas con sus respectivas estaciones y transbordos, y las ordena
-  asignarEstacionesTransbordosALineas(){
+  asignarEstacionesTransbordosALineas() {
     for (var linea in lineas) {
       for (var estacion in estaciones) {
         //Agregar estaciones a su respectiva linea si el id es el mismo
@@ -86,9 +85,9 @@ class CargadorListas{
   }
 
   //Asignas las lineas al sistema al que perteneces
-  asignarLineasASistemas(){
-    for (var sistema in sistemas){
-      for (var linea in lineas){
+  asignarLineasASistemas() {
+    for (var sistema in sistemas) {
+      for (var linea in lineas) {
         //Agrega la linea a un sistema si los id corresponden
         if (linea.sistemaId == sistema.id) {
           //widget.todasLasEstaciones.addAll(linea.estaciones);
@@ -97,5 +96,4 @@ class CargadorListas{
       }
     }
   }
-
 }

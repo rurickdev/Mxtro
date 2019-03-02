@@ -72,7 +72,8 @@ class DatabaseHelper{
   //Estaciones
   Future<List<Map<String, dynamic>>> getListaMapEstacion() async{
 
-    Database dataBase = await this._db;
+    //Database dataBase = await this._db;
+    Database dataBase = this._db;
     var resultados = await dataBase.query('estacion');
 
     return resultados;
@@ -81,7 +82,8 @@ class DatabaseHelper{
   //Transbordos
   Future<List<Map<String, dynamic>>> getListaMapTransbordo() async{
 
-    Database dataBase = await this._db;
+    //Database dataBase = await this._db;
+    Database dataBase = this._db;
     var resultados = await dataBase.query('transbordo');
 
     return resultados;
@@ -90,7 +92,8 @@ class DatabaseHelper{
   //Correspondencia
   Future<List<Map<String, dynamic>>> getListaMapCorrespondencia() async{
 
-    Database dataBase = await this._db;
+    // Database dataBase = await this._db;
+    Database dataBase = this._db;
     var resultados = await dataBase.query('correspondencia');
 
     return resultados;
@@ -99,7 +102,8 @@ class DatabaseHelper{
   //Lineas
   Future<List<Map<String, dynamic>>> getListaMapLinea() async{
 
-    Database dataBase = await this._db;
+    // Database dataBase = await this._db;
+    Database dataBase = this._db;
     var resultados = await dataBase.query('linea');
 
     return resultados;
@@ -108,7 +112,8 @@ class DatabaseHelper{
   //Sistemas
   Future<List<Map<String, dynamic>>> getListaMapSistema() async{
 
-    Database dataBase = await this._db;
+    // Database dataBase = await this._db;
+    Database dataBase = this._db;
     var resultados = await dataBase.query('sistemaTransporte');
 
     return resultados;
