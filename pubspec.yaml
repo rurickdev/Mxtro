@@ -50,6 +50,9 @@ dependencies:
   #Web View para mostrar feed de twitter
   #flutter_webview_plugin: ^0.3.0
 
+  #General Lorem Ipsum, Borrar en la release
+  flutter_lorem: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
