@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+//ToDo: Remover esta libreria en el release
+import 'package:flutter_lorem/flutter_lorem.dart';
 
 class AboutScreen extends StatelessWidget {
   @override
@@ -12,12 +14,13 @@ class AboutScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          DevPic(), //ToDo: Cambiar por una foto redonda e integrar en el [DevInfoCard]
           DevInfoCard(),
           Container(
             margin: EdgeInsets.all(16),
             //ToDO: Agregar informacion de la aplicacion
-            child: Text('Mas texto sobre la aplicaion, librerias de codigo abierto, licencia, etc...'),
+            child: Text(
+              lorem(paragraphs: 3, words: 120),
+            ),
           ),
         ],
       ),
@@ -29,11 +32,13 @@ class AboutScreen extends StatelessWidget {
 class DevPic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return //Foto del desarrollador
-    Container(
-      height: 100,
-      width: 100,
-      child: Placeholder(),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Icon(
+        Icons.person,
+        color: Colors.black,
+        size: 100,
+      ),
     );
   }
 }
@@ -42,16 +47,34 @@ class DevPic extends StatelessWidget {
 class DevInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
+    return Container(
+      child: Stack(
         children: <Widget>[
-          SocialIcons(),
-          //ToDo: Traducir este texto
-          Text('Rurick Maqueo Poisot', style: TextStyle(fontWeight: FontWeight.bold),),
-          Text('Yo hice posible este proyecto'),
-          SizedBox(
-            height: 8,
+          Container(
+            margin: EdgeInsets.only(
+              top: 50,
+            ),
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 30,
+                  ),
+                  SocialIcons(),
+                  //ToDo: Traducir este texto
+                  Text(
+                    'Rurick Maqueo Poisot',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text('Yo hice posible este proyecto'),
+                  SizedBox(
+                    height: 8,
+                  ),
+                ],
+              ),
+            ),
           ),
+          DevPic(),
         ],
       ),
     );
@@ -61,29 +84,39 @@ class DevInfoCard extends StatelessWidget {
 //Iconos de redes sociales
 class SocialIcons extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         IconButton(
-          icon: Icon(CommunityMaterialIcons.twitter,),
-          onPressed: (){},  
+          icon: Icon(
+            CommunityMaterialIcons.twitter,
+          ),
+          onPressed: () {}),
         ),
         IconButton(
-          icon: Icon(CommunityMaterialIcons.linkedin,),
-          onPressed: (){},  
+          icon: Icon(
+            CommunityMaterialIcons.linkedin,
+          ),
+          onPressed: () {},
         ),
         IconButton(
-          icon: Icon(CommunityMaterialIcons.github_face,),
-          onPressed: (){},  
+          icon: Icon(
+            CommunityMaterialIcons.github_face,
+          ),
+          onPressed: () {},
         ),
         IconButton(
-          icon: Icon(CommunityMaterialIcons.instagram,),
-          onPressed: (){},  
+          icon: Icon(
+            CommunityMaterialIcons.instagram,
+          ),
+          onPressed: () {},
         ),
         IconButton(
-          icon: Icon(CommunityMaterialIcons.facebook,),
-          onPressed: (){},  
+          icon: Icon(
+            CommunityMaterialIcons.facebook,
+          ),
+          onPressed: () {},
         ),
       ],
     );
