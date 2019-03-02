@@ -60,24 +60,34 @@ class _SearchScreenState extends State<SearchScreen> {
               });
             }),
       ),
-      body: Hero(
-        tag: 'BotonBuscar',
-        child: resultadosBusqueda(),
+      body: ResultadosBusqueda(
+        noHayBusqueda: noHayBusqueda,
+        nombresFiltrados: nombresFiltrados,
       ),
     );
   }
+}
 
-  //Cambia el body del scaffold segun haya o no resultados de busqueda
-  Widget resultadosBusqueda() {
-    //Si no hay busqueda muestra un icono de una lupa con una texto
+class ResultadosBusqueda extends StatelessWidget {
+  final bool noHayBusqueda;
+  final List<SuperEstacion> nombresFiltrados;
+
+  ResultadosBusqueda(
+      {@required this.noHayBusqueda, @required this.nombresFiltrados});
+
+  @override
+  Widget build(BuildContext context) {
     if (noHayBusqueda) {
-      return mensajeBusqueda(CommunityMaterialIcons.map_search_outline,
-          'Solo Escribe el Nombre de la Estacion');
+      return MensajeBusqueda(
+          icono: CommunityMaterialIcons.map_search_outline,
+          mensaje: 'Solo Escribe el Nombre de la Estacion');
     } else {
       // Si no hay resultados muestra un icono y un mensaje indicando que no hubo resultados
       if (nombresFiltrados.isEmpty) {
-        return mensajeBusqueda(CommunityMaterialIcons.emoticon_sad,
-            'Lo sentimos, no pudimos encontrar la estacion que buscas');
+        return MensajeBusqueda(
+            icono: CommunityMaterialIcons.emoticon_sad,
+            mensaje:
+                'Lo sentimos, no pudimos encontrar la estacion que buscas');
       } else {
         //Si hay resultados muestra la lista de resultados
         return ListView.builder(
@@ -99,18 +109,32 @@ class _SearchScreenState extends State<SearchScreen> {
       }
     }
   }
+}
 
-  Widget mensajeBusqueda(IconData icono, String mensaje) {
+class MensajeBusqueda extends StatelessWidget {
+  final IconData icono;
+  final String mensaje;
+
+  MensajeBusqueda({
+    @required this.icono,
+    @required this.mensaje,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              icono,
-              size: 100,
-              color: Colors.grey,
+            Hero(
+              tag: 'BotonBuscar',
+              child: Icon(
+                icono,
+                size: 100,
+                color: Colors.grey,
+              ),
             ),
             Text(
               mensaje,
