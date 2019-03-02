@@ -23,8 +23,7 @@ import '../widgets/mi_drawer_widget.dart';
 import '../widgets/mi_app_bar_widget.dart';
 import '../widgets/news_widget.dart';
 
-class SistemaScreen extends StatefulWidget{
-
+class SistemaScreen extends StatefulWidget {
   final int idSistema;
   final List<Sistema> sistemas;
 
@@ -34,8 +33,7 @@ class SistemaScreen extends StatefulWidget{
   _SistemaScreenState createState() => _SistemaScreenState();
 }
 
-class _SistemaScreenState extends State<SistemaScreen>{
-
+class _SistemaScreenState extends State<SistemaScreen> {
   List<Sistema> sistemas;
   int idSistema;
   List<SuperEstacion> estaciones = [];
@@ -54,8 +52,8 @@ class _SistemaScreenState extends State<SistemaScreen>{
     sistemas = widget.sistemas;
     idSistema = widget.idSistema;
     body = bottomBarOptions(_indexElegido);
-    for (var sistema in sistemas){
-      for (var linea in sistema.listaLineas){
+    for (var sistema in sistemas) {
+      for (var linea in sistema.listaLineas) {
         estaciones.addAll(linea.estaciones);
       }
     }
@@ -69,13 +67,22 @@ class _SistemaScreenState extends State<SistemaScreen>{
       data: Theme.of(context).copyWith(
         primaryColor: Color(sistemas[idSistema].colorPrimario),
         accentColor: Color(sistemas[idSistema].colorSecundario),
-        primaryTextTheme: TextTheme(title: TextStyle(color: Color(sistemas[idSistema].colorSecundario))),
-        primaryIconTheme: IconThemeData(color: Color(sistemas[idSistema].colorSecundario),),
+        primaryTextTheme: TextTheme(
+            title:
+                TextStyle(color: Color(sistemas[idSistema].colorSecundario))),
+        primaryIconTheme: IconThemeData(
+          color: Color(sistemas[idSistema].colorSecundario),
+        ),
       ),
       child: Scaffold(
         //Action Bar con 2 botones, uno para buscar estaciones y otro para generar una ruta
-        appBar: MiAppBar(titulo: Text(sistemas[widget.idSistema].nombre), context: context, estaciones: estaciones, sistema: sistemas[widget.idSistema],),
-        drawer: MiDrawer(sistemas),
+        appBar: MiAppBar(
+          titulo: Text(sistemas[widget.idSistema].nombre),
+          context: context,
+          estaciones: estaciones,
+          sistema: sistemas[widget.idSistema],
+        ),
+        drawer: MiDrawerWidget(sistemas),
         body: Center(
           //child: _opcionesBottomBar.elementAt(_indexElegido),
           child: body,
@@ -85,14 +92,13 @@ class _SistemaScreenState extends State<SistemaScreen>{
     );
   }
 
-  BottomNavigationBar miBottomBar (){
-
+  BottomNavigationBar miBottomBar() {
     //color de los iconos de la NavBar segun el color del sistema actual
     Color colorIconos;
 
-    if(colorSistema == Color(0xFFFFFFFF)){
+    if (colorSistema == Color(0xFFFFFFFF)) {
       colorIconos = colorSistemaSecundario;
-    }else{
+    } else {
       colorIconos = colorSistema;
     }
 
@@ -100,28 +106,55 @@ class _SistemaScreenState extends State<SistemaScreen>{
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(MetroAppFont.icon_bottombar_estaciones, color: colorIconos,),
-          title: Text('Lineas y Estaciones', style: TextStyle(color: colorIconos),),
+          icon: Icon(
+            MetroAppFont.icon_bottombar_estaciones,
+            color: colorIconos,
+          ),
+          title: Text(
+            'Lineas y Estaciones',
+            style: TextStyle(color: colorIconos),
+          ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(CommunityMaterialIcons.map, color: colorIconos,),
-          activeIcon: Icon(CommunityMaterialIcons.map_outline, color: colorIconos,),
-          title: Text('Mapa', style: TextStyle(color: colorIconos),)
-        ),
+            icon: Icon(
+              CommunityMaterialIcons.map,
+              color: colorIconos,
+            ),
+            activeIcon: Icon(
+              CommunityMaterialIcons.map_outline,
+              color: colorIconos,
+            ),
+            title: Text(
+              'Mapa',
+              style: TextStyle(color: colorIconos),
+            )),
         BottomNavigationBarItem(
-          icon: Icon(Icons.info, color: colorIconos,),
-          activeIcon: Icon(Icons.info_outline, color: colorIconos,),
-          title: Text('Informacion', style: TextStyle(color: colorIconos),)
-        ),
+            icon: Icon(
+              Icons.info,
+              color: colorIconos,
+            ),
+            activeIcon: Icon(
+              Icons.info_outline,
+              color: colorIconos,
+            ),
+            title: Text(
+              'Informacion',
+              style: TextStyle(color: colorIconos),
+            )),
         BottomNavigationBarItem(
-          icon: Icon(CommunityMaterialIcons.newspaper, color: colorIconos,),
-          title: Text('Noticias', style: TextStyle(color: colorIconos),)
-        ),
+            icon: Icon(
+              CommunityMaterialIcons.newspaper,
+              color: colorIconos,
+            ),
+            title: Text(
+              'Noticias',
+              style: TextStyle(color: colorIconos),
+            )),
       ],
       currentIndex: _indexElegido,
       fixedColor: colorIconos,
-      onTap: (int indice){
-        setState((){
+      onTap: (int indice) {
+        setState(() {
           _indexElegido = indice;
           body = bottomBarOptions(_indexElegido);
         });
@@ -130,10 +163,11 @@ class _SistemaScreenState extends State<SistemaScreen>{
   }
 
   Widget bottomBarOptions(int opcion) {
-    switch (opcion){
+    switch (opcion) {
       case 0:
-        return LineasEstacionesWidget(sistema: idSistema, sistemas: sistemas,);
-        //return lineasEstaciones;
+        return LineasEstacionesWidget(
+          sistema: sistemas[idSistema],
+        );
         break;
       case 1:
         return PhotoView(

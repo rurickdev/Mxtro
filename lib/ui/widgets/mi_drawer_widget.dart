@@ -4,12 +4,11 @@ import '../screens/sistema_screen.dart';
 import '../screens/about_screen.dart';
 import '../screens/settings_screen.dart';
 
-class MiDrawer extends StatelessWidget{
-
+class MiDrawerWidget extends StatelessWidget {
   final List<Sistema> sistemas;
 
-  MiDrawer(this.sistemas);
-  
+  MiDrawerWidget(this.sistemas);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,18 +16,27 @@ class MiDrawer extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           //ToDo: Cambiar esta imagen por una animacion propia
-          Image(image: AssetImage('graphics/iconos_interfaz/drawer_pic.jpg'), fit: BoxFit.fitWidth),
+          Image(
+              image: AssetImage('graphics/iconos_interfaz/drawer_pic.jpg'),
+              fit: BoxFit.fitWidth),
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.only(top: 0),
               itemCount: sistemas.length,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return ListTile(
                   title: Text(sistemas[index].nombre),
-                  leading: Image.asset(sistemas[index].simbolo, height: 35,),
-                  onTap: (){
+                  leading: Image.asset(
+                    sistemas[index].simbolo,
+                    height: 35,
+                  ),
+                  onTap: () {
                     Navigator.pop(context);
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SistemaScreen(index, sistemas)));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                SistemaScreen(index, sistemas)));
                   },
                 );
               },
@@ -38,16 +46,17 @@ class MiDrawer extends StatelessWidget{
           ListTile(
             title: Text('Acerca de'),
             leading: Icon(Icons.info),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AboutScreen())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AboutScreen())),
           ),
           ListTile(
             title: Text('Ajustes'),
             leading: Icon(Icons.settings),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SettingsScreen())),
           ),
         ],
       ),
     );
   }
-  
 }
