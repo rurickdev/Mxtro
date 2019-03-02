@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import '../../models/estacion.dart';
+import '../../models/linea.dart';
 import '../widgets/mapa_linea_widget.dart';
 import '../widgets/estacion_pagina_widget.dart';
 
 //! ToDo: Hacer privada la API Key de Google Maps - Urgente
-class EstacionScreen extends StatelessWidget{
-
+class EstacionScreen extends StatelessWidget {
+  final Linea linea;
   final Estacion estacion;
 
-  EstacionScreen({this.estacion});  
+  EstacionScreen({this.estacion, this.linea});
 
   @override
   Widget build(BuildContext context) {
-
     PageController pageController = PageController(
-      initialPage: estacion.ubicacionEnLinea-1,
+      initialPage: estacion.ubicacionEnLinea - 1,
     );
 
     MapaLinea mapa = MapaLinea(
-      linea: estacion.linea, 
+      linea: linea,
       estacion: estacion,
     );
 
@@ -27,36 +27,42 @@ class EstacionScreen extends StatelessWidget{
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(estacion.linea.color),
-        title: Text(estacion.linea.nombre, style: TextStyle(color: Colors.white),),
+        backgroundColor: Color(linea.color),
+        title: Text(
+          linea.nombre,
+          style: TextStyle(color: Colors.white),
+        ),
         automaticallyImplyLeading: true,
         actions: <Widget>[
           //Boton de compartir estacion actual
-          IconButton(icon: Icon(Icons.share), onPressed: (){
-            Share.share(shareText);
-          }),
+          IconButton(
+              icon: Icon(Icons.share),
+              onPressed: () {
+                Share.share(shareText);
+              }),
         ],
       ),
       body: Column(
         children: <Widget>[
           //Mapa con pin de la estacion
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height/3,
-            child: mapa
-          ),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 3,
+              child: mapa),
           Expanded(
             child: PageView.builder(
               controller: pageController,
-              onPageChanged: (indice) {
-                mapa.actualizarCoordenadas(estacion.linea.estaciones[indice].ubiGeo,);
-                shareText = changeShareText(estacion.linea.estaciones[indice]);
-                print(estacion.linea.estaciones[indice]);
+              onPageChanged: (index) {
+                mapa.actualizarCoordenadas(
+                  linea.estaciones[index].ubiGeo,
+                );
+                shareText = changeShareText(linea.estaciones[index]);
+                print(linea.estaciones[index]);
               },
-              itemCount: estacion.linea.estaciones.length,
-              itemBuilder: (context, index){
+              itemCount: linea.estaciones.length,
+              itemBuilder: (context, index) {
                 return EstacionPagina(
-                  estacion: estacion.linea.estaciones[index],
+                  estacion: linea.estaciones[index],
                 );
               },
             ),
@@ -67,8 +73,7 @@ class EstacionScreen extends StatelessWidget{
   }
 
   //Actualiza el texto que compartira la aplicacion al presionar el boton "Share Estacion"
-  String changeShareText(Estacion estacionInfo){
-    return '${estacionInfo.nombre} de la ${estacionInfo.linea.nombre}\nhttps://www.google.com/maps/search/?api=1&query=${estacionInfo.latitud},${estacionInfo.longitud}&query_place_id=${estacionInfo.mapsId}';
-
+  String changeShareText(Estacion estacion) {
+    return '${estacion.nombre} de la ${estacion.linea.nombre}\nhttps://www.google.com/maps/search/?api=1&query=${estacion.latitud},${estacion.longitud}&query_place_id=${estacion.mapsId}';
   }
 }
