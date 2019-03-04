@@ -13,7 +13,7 @@ class AboutScreen extends StatelessWidget {
         //ToDo: traducir este texto
         title: Text('Acerca de'),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           DevInfoCard(),
           Container(
@@ -29,16 +29,30 @@ class AboutScreen extends StatelessWidget {
   }
 }
 
-//Foto del desarrollador
+//Foto del desarrollador circular
 class DevPic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Icon(
-        Icons.person,
-        color: Colors.black,
-        size: 100,
+      width: 100,
+      height: 100,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 3,
+          color: Colors.black87,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black45,
+            blurRadius: 5,
+          ),
+        ],
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          fit: BoxFit.fill,
+          image: AssetImage('graphics/dev_pic.jpg'),
+        ),
       ),
     );
   }
@@ -52,14 +66,19 @@ class DevInfoCard extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(
-              top: 50,
-            ),
             child: Card(
               child: Column(
                 children: <Widget>[
+                  Container(
+                    //height: MediaQuery.of(context).size.height / 4,
+                    //width: MediaQuery.of(context).size.width,
+                    child: Image.asset(
+                      'graphics/iconos_interfaz/drawer_pic.jpg',
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   SocialIcons(),
                   //ToDo: Traducir este texto
@@ -75,7 +94,11 @@ class DevInfoCard extends StatelessWidget {
               ),
             ),
           ),
-          DevPic(),
+          Positioned(
+            bottom: 80,
+            left: (MediaQuery.of(context).size.width / 2) - 50,
+            child: DevPic(),
+          ),
         ],
       ),
     );
@@ -110,7 +133,7 @@ class SocialIcons extends StatelessWidget {
             CommunityMaterialIcons.github_face,
           ),
           onPressed: () {
-            launchURL('https://github.com/skinitgth');
+            launchURL('https://github.com/skintigth');
           },
         ),
         IconButton(
