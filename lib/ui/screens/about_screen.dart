@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:url_launcher/url_launcher.dart';
 //ToDo: Remover esta libreria en el release
 import 'package:flutter_lorem/flutter_lorem.dart';
 
@@ -89,35 +90,55 @@ class SocialIcons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         IconButton(
-            icon: Icon(
-              CommunityMaterialIcons.twitter,
-            ),
-            onPressed: () {}),
+          icon: Icon(
+            CommunityMaterialIcons.twitter,
+          ),
+          onPressed: () {
+            launchURL('https://twitter.com/skintigth');
+          },
+        ),
         IconButton(
           icon: Icon(
             CommunityMaterialIcons.linkedin,
           ),
-          onPressed: () {},
+          onPressed: () {
+            launchURL('https://www.linkedin.com/in/rurickmpdev');
+          },
         ),
         IconButton(
           icon: Icon(
             CommunityMaterialIcons.github_face,
           ),
-          onPressed: () {},
+          onPressed: () {
+            launchURL('https://github.com/skinitgth');
+          },
         ),
         IconButton(
           icon: Icon(
             CommunityMaterialIcons.instagram,
           ),
-          onPressed: () {},
+          //ToDo: Cambiar a un perfil publico de desarrollo
+          onPressed: () {
+            launchURL('https://www.instagram.com/skintigth_/');
+          },
         ),
         IconButton(
           icon: Icon(
-            CommunityMaterialIcons.facebook,
+            CommunityMaterialIcons.medium,
           ),
-          onPressed: () {},
+          onPressed: () {
+            launchURL('https://medium.com/@skintigth');
+          },
         ),
       ],
     );
+  }
+
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
