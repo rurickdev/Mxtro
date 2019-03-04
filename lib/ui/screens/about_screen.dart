@@ -11,7 +11,7 @@ class AboutScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         //ToDo: traducir este texto
-        title: Text('Sobre Nosotros'),
+        title: Text('Acerca de'),
       ),
       body: Column(
         children: <Widget>[
