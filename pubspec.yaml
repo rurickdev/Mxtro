@@ -35,8 +35,9 @@ dependencies:
 
   #Mostrar el mapa de las lineas
   google_maps_flutter: ^0.0.3
-  #Abrir el mapa en google maps
-  #url_launcher: ^4.0.3
+  
+  #Abrir enlaces en otras apps
+  url_launcher: ^4.0.3
 
   # Compartir datos a otras apps
   share: ^0.5.3
