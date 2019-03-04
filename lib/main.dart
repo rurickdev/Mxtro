@@ -6,7 +6,7 @@
 ///
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+//import 'package:flutter/rendering.dart';
 import 'ui/screens/splash_screen.dart';
 
 void main() {
