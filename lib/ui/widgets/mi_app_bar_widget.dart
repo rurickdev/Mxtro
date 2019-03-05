@@ -34,18 +34,21 @@ class BotonBuscar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'BotonBuscar',
-      child: IconButton(
-        icon: Icon(
-          CommunityMaterialIcons.map_search_outline,
+      child: Material(
+        color: Colors.transparent,
+        child: IconButton(
+          icon: Icon(
+            CommunityMaterialIcons.map_search_outline,
+          ),
+          onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SearchScreen(
+                        estaciones: estaciones,
+                      ))),
+          //Todo: Traducir este texto
+          tooltip: 'Buscar Estacion',
         ),
-        onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => SearchScreen(
-                      estaciones: estaciones,
-                    ))),
-        //Todo: Traducir este texto
-        tooltip: 'Buscar Estacion',
       ),
     );
   }
