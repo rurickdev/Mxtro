@@ -15,9 +15,6 @@ class LineaWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: <Widget>[
-          // SizedBox(
-          //   height: 10,
-          // ),
           Padding(
             padding: EdgeInsets.only(right: 8.0),
             child: Row(
