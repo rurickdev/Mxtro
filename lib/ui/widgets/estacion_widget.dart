@@ -39,13 +39,25 @@ class EstacionWidget extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             builder: (builder) {
-              return InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                  navigateToEstacionScreen(context);
-                },
-                child: EstacionInfoWidget(
-                  estacion: estacion,
+              return Container(
+                height: MediaQuery.of(context).size.height / 4,
+                child: Column(
+                  children: <Widget>[
+                    EstacionInfoWidget(
+                      estacion: estacion,
+                    ),
+                    ButtonTheme(
+                      minWidth: MediaQuery.of(context).size.width - 16,
+                      child: RaisedButton(
+                        onPressed: () => navigateToEstacionScreen(context),
+                        child: Text(
+                          'Detalles de la estacion',
+                        ),
+                        color: Color(estacion.linea.color),
+                        textColor: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               );
             },
