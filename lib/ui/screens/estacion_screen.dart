@@ -10,7 +10,10 @@ class EstacionScreen extends StatelessWidget {
   final Linea linea;
   final Estacion estacion;
 
-  EstacionScreen({this.estacion, this.linea});
+  EstacionScreen({
+    this.estacion,
+    this.linea,
+  });
 
   @override
   Widget build(BuildContext context) {
