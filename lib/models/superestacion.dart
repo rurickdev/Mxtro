@@ -1,3 +1,5 @@
+import 'dart:async';
+
 /// Hecho por Rurick Maqueo Poisot
 /// mail: rurick.mpoisot@gmail.com
 /// github: github.com/skintigth
@@ -17,8 +19,7 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'linea.dart';
 
-class SuperEstacion{
-
+class SuperEstacion {
   //Parametros
   String _id;
   String _nombre;
@@ -46,35 +47,43 @@ class SuperEstacion{
   LatLng get ubiGeo => LatLng(_latitud, _longitud);
 
   //Setters
-  set id (String newId){
+  set id(String newId) {
     this._id = newId;
   }
-  set nombre (String newNombre){
+
+  set nombre(String newNombre) {
     this._nombre = newNombre;
   }
-  set simbolo (String newSimbolo){
+
+  set simbolo(String newSimbolo) {
     this._simbolo = 'graphics/imagenes_estaciones/' + newSimbolo;
   }
-  set lineaId (String newLineaId){
+
+  set lineaId(String newLineaId) {
     this._lineaId = newLineaId;
   }
-  set latitud (double newLatitud){
+
+  set latitud(double newLatitud) {
     this._latitud = newLatitud;
   }
-  set longitud (double newLongitud){
+
+  set longitud(double newLongitud) {
     this._longitud = newLongitud;
   }
-  set linea (Linea newLinea){
+
+  set linea(Linea newLinea) {
     this._linea = newLinea;
   }
-  set correspondencias (Map<String, int> newCorrespondencias){
+
+  set correspondencias(Map<String, int> newCorrespondencias) {
     this._correspondencias = newCorrespondencias;
   }
-  set mapsId (String newMapsId){
+
+  set mapsId(String newMapsId) {
     this._mapsId = newMapsId;
   }
 
-  String toString(){
+  String toString() {
     return '${this._nombre}\n';
   }
 }
