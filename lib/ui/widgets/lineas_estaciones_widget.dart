@@ -56,7 +56,7 @@ class TwoLinesOrLess extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Image.asset(
-                  'graphics/sin_icono_estacion_128.png',
+                  'graphics/sin_icono_estacion.png',
                   height: 70,
                 ),
                 Text(sistema.listaLineas[0].estaciones[index].nombre)
