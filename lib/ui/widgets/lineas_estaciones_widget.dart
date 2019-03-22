@@ -46,23 +46,23 @@ class TwoLinesOrLess extends StatelessWidget {
     return GridView.count(
       padding: EdgeInsets.only(top: 20),
       crossAxisCount: 3,
-      children:
-          List.generate(sistema.listaLineas[0].estaciones.length, (index) {
-        return InkWell(
-          child: Column(
-            children: <Widget>[
-              //Image.asset(sistema.listaLineas[0].estaciones[index].simbolo, height: 70,),
-              Container(
-                  width: 70,
+      children: List.generate(
+        sistema.listaLineas[0].estaciones.length,
+        (index) {
+          return InkWell(
+            onTap: () {},
+            child: Column(
+              children: <Widget>[
+                Image.asset(
+                  'graphics/sin_icono_estacion_128.png',
                   height: 70,
-                  child: Placeholder(
-                    color: Color(sistema.listaLineas[0].color),
-                  )),
-              Text(sistema.listaLineas[0].estaciones[index].nombre)
-            ],
-          ),
-        );
-      }),
+                ),
+                Text(sistema.listaLineas[0].estaciones[index].nombre)
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

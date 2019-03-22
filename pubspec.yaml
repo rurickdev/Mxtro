@@ -73,6 +73,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - graphics/dev_pic.jpg
+    - graphics/sin_icono_estacion_128.png
     - graphics/iconos_interfaz/
     - graphics/iconos_switchs/
     - graphics/sistemas/
