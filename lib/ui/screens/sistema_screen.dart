@@ -75,7 +75,10 @@ class _SistemaScreenState extends State<SistemaScreen> {
         ),
       ),
       child: Scaffold(
-        //Action Bar con 2 botones, uno para buscar estaciones y otro para generar una ruta
+        //Action Bar con 3 botones:
+        // -buscar estaciones
+        // -generar una ruta
+        // -funciones experimentales
         appBar: MiAppBar(
           titulo: Text(sistemas[widget.idSistema].nombre),
           context: context,
