@@ -28,7 +28,9 @@ class LineasEstacionesWidget extends StatelessWidget {
           itemCount: sistema.numeroLineas,
           //Construye la lista con cada una de las lineas del sistema
           itemBuilder: (context, index) {
-            return LineaWidget(sistema.listaLineas[index]);
+            return LineaWidget(
+              linea: sistema.listaLineas[index],
+            );
           },
         );
     }

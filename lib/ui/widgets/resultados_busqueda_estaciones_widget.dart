@@ -32,11 +32,14 @@ class ResultadosBusqueda extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
+                    context,
+                    MaterialPageRoute(
                       builder: (context) => EstacionScreen(
                             estacion: nombresFiltrados[index],
-                          ))),
+                            linea: nombresFiltrados[index].linea,
+                          ),
+                    ),
+                  ),
               child: EstacionInfoWidget(
                 estacion: nombresFiltrados[index],
               ),
