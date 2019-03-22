@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/sistema.dart';
+import 'mensaje_con_icono_widget.dart';
 import 'linea_widget.dart';
 
 class LineasEstacionesWidget extends StatelessWidget {
@@ -70,28 +71,10 @@ class TwoLinesOrLess extends StatelessWidget {
 class NoDataBaseInfoFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.error_outline,
-              size: 100,
-              color: Colors.grey,
-            ),
-            //ToDo: Este texto será traducido
-            Text(
-              'No hay estaciones en la DataBase aun',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
-      ),
+    //ToDo: Este texto será traducido
+    return MensajeConIcono(
+      icono: Icons.error_outline,
+      mensaje: 'No hay Estaciones en la DataBase aun',
     );
   }
 }
