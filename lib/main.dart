@@ -20,11 +20,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Metro App',
       home: SplashScreen(),
-      theme: ThemeData(
-        //ToDo: Cambiar los colores segun el sistema predilecto del usuario guardado en [SharedPreferences]
-        primaryColor: Colors.deepOrange,
-        accentColor: Colors.deepOrangeAccent,
-      ),
       debugShowCheckedModeBanner: false,
     );
   }
