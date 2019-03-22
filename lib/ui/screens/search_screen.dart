@@ -3,6 +3,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import '../../models/superestacion.dart';
 import '../screens/estacion_screen.dart';
 import '../widgets/estacion_info_widget.dart';
+import '../widgets/mensaje_con_icono_widget.dart';
 
 class SearchScreen extends StatefulWidget {
   final List<SuperEstacion> estaciones;
@@ -78,13 +79,13 @@ class ResultadosBusqueda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (noHayBusqueda) {
-      return MensajeBusqueda(
+      return MensajeConIcono(
           icono: CommunityMaterialIcons.map_search_outline,
           mensaje: 'Solo Escribe el Nombre de la Estacion');
     } else {
       // Si no hay resultados muestra un icono y un mensaje indicando que no hubo resultados
       if (nombresFiltrados.isEmpty) {
-        return MensajeBusqueda(
+        return MensajeConIcono(
             icono: CommunityMaterialIcons.emoticon_sad,
             mensaje:
                 'Lo sentimos, no pudimos encontrar la estacion que buscas');
@@ -108,44 +109,5 @@ class ResultadosBusqueda extends StatelessWidget {
         );
       }
     }
-  }
-}
-
-class MensajeBusqueda extends StatelessWidget {
-  final IconData icono;
-  final String mensaje;
-
-  MensajeBusqueda({
-    @required this.icono,
-    @required this.mensaje,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Hero(
-              tag: 'BotonBuscar',
-              child: Icon(
-                icono,
-                size: 100,
-                color: Colors.grey,
-              ),
-            ),
-            Text(
-              mensaje,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
