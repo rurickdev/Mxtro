@@ -1,5 +1,3 @@
-import 'dart:async';
-
 /// Hecho por Rurick Maqueo Poisot
 /// mail: rurick.mpoisot@gmail.com
 /// github: github.com/skintigth
