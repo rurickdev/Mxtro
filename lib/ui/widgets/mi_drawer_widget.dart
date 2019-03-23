@@ -17,44 +17,9 @@ class MiDrawerWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           //ToDo: Cambiar esta imagen por una animacion propia
-          Container(
-            child: Stack(
-              children: <Widget>[
-                Image(
-                  image: AssetImage('graphics/iconos_interfaz/drawer_pic.jpg'),
-                  fit: BoxFit.fitWidth,
-                ),
-                FlareActor(
-                  'assets/animaciones/train.flr',
-                  animation: 'MoveTrain',
-                  fit: BoxFit.fitHeight,
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.only(top: 0),
-              itemCount: sistemas.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(sistemas[index].nombre),
-                  leading: Image.asset(
-                    sistemas[index].simbolo,
-                    height: 35,
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SistemaScreen(index, sistemas),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
+          DrawerHeader(),
+          ListaSistemas(
+            sistemas: sistemas,
           ),
           Divider(),
           ListTile(
@@ -70,6 +35,64 @@ class MiDrawerWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => SettingsScreen())),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class DrawerHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('graphics/fondo_copilco.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      height: 150,
+      child: FlareActor(
+        'assets/animaciones/train.flr',
+        animation: 'MoveTrain',
+
+        //fit: BoxFit.fitHeight,
+      ),
+    );
+  }
+}
+
+class ListaSistemas extends StatelessWidget {
+  final List<Sistema> sistemas;
+
+  ListaSistemas({
+    @required this.sistemas,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        padding: EdgeInsets.symmetric(vertical: 0),
+        itemCount: sistemas.length,
+        itemBuilder: (BuildContext context, int index) {
+          Sistema sistema = sistemas[index];
+          return ListTile(
+            title: Text(sistema.nombre),
+            leading: Image.asset(
+              sistema.simbolo,
+              height: 35,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SistemaScreen(sistemas, sistema),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }

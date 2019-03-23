@@ -24,10 +24,10 @@ import '../widgets/mi_app_bar_widget.dart';
 import '../widgets/news_widget.dart';
 
 class SistemaScreen extends StatefulWidget {
-  final int idSistema;
   final List<Sistema> sistemas;
+  final Sistema sistema;
 
-  SistemaScreen(this.idSistema, this.sistemas);
+  SistemaScreen(this.sistemas, this.sistema);
 
   @override
   _SistemaScreenState createState() => _SistemaScreenState();
@@ -35,8 +35,8 @@ class SistemaScreen extends StatefulWidget {
 
 class _SistemaScreenState extends State<SistemaScreen> {
   List<Sistema> sistemas;
-  int idSistema;
   List<SuperEstacion> estaciones = [];
+  Sistema sistema;
 
   Color colorSistema;
   Color colorSistemaSecundario;
@@ -49,29 +49,28 @@ class _SistemaScreenState extends State<SistemaScreen> {
   @override
   void initState() {
     super.initState();
+    sistema = widget.sistema;
     sistemas = widget.sistemas;
-    idSistema = widget.idSistema;
     body = bottomBarOptions(_indexElegido);
-    for (var sistema in sistemas) {
-      for (var linea in sistema.listaLineas) {
+    for (var sis in sistemas) {
+      for (var linea in sis.listaLineas) {
         estaciones.addAll(linea.estaciones);
       }
     }
-    colorSistema = Color(sistemas[widget.idSistema].colorPrimario);
-    colorSistemaSecundario = Color(sistemas[widget.idSistema].colorSecundario);
+    colorSistema = Color(sistema.colorPrimario);
+    colorSistemaSecundario = Color(sistema.colorSecundario);
   }
 
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        primaryColor: Color(sistemas[idSistema].colorPrimario),
-        accentColor: Color(sistemas[idSistema].colorSecundario),
-        primaryTextTheme: TextTheme(
-            title:
-                TextStyle(color: Color(sistemas[idSistema].colorSecundario))),
+        primaryColor: colorSistema,
+        accentColor: colorSistemaSecundario,
+        primaryTextTheme:
+            TextTheme(title: TextStyle(color: colorSistemaSecundario)),
         primaryIconTheme: IconThemeData(
-          color: Color(sistemas[idSistema].colorSecundario),
+          color: colorSistemaSecundario,
         ),
       ),
       child: Scaffold(
@@ -80,14 +79,13 @@ class _SistemaScreenState extends State<SistemaScreen> {
         // -generar una ruta
         // -funciones experimentales
         appBar: MiAppBar(
-          titulo: Text(sistemas[widget.idSistema].nombre),
+          titulo: Text(sistema.nombre),
           context: context,
           estaciones: estaciones,
-          sistema: sistemas[widget.idSistema],
+          sistema: sistema,
         ),
         drawer: MiDrawerWidget(sistemas),
         body: Center(
-          //child: _opcionesBottomBar.elementAt(_indexElegido),
           child: body,
         ),
         bottomNavigationBar: miBottomBar(),
@@ -99,11 +97,9 @@ class _SistemaScreenState extends State<SistemaScreen> {
     //color de los iconos de la NavBar segun el color del sistema actual
     Color colorIconos;
 
-    if (colorSistema == Color(0xFFFFFFFF)) {
-      colorIconos = colorSistemaSecundario;
-    } else {
-      colorIconos = colorSistema;
-    }
+    colorSistema == Color(0xFFFFFFFF)
+        ? colorIconos = colorSistemaSecundario
+        : colorIconos = colorSistema;
 
     //ToDo: Traducir los textos de los botones de la BottomNavBar
     return BottomNavigationBar(
@@ -119,40 +115,43 @@ class _SistemaScreenState extends State<SistemaScreen> {
           ),
         ),
         BottomNavigationBarItem(
-            icon: Icon(
-              CommunityMaterialIcons.map,
-              color: colorIconos,
-            ),
-            activeIcon: Icon(
-              CommunityMaterialIcons.map_outline,
-              color: colorIconos,
-            ),
-            title: Text(
-              'Mapa',
-              style: TextStyle(color: colorIconos),
-            )),
+          icon: Icon(
+            CommunityMaterialIcons.map,
+            color: colorIconos,
+          ),
+          activeIcon: Icon(
+            CommunityMaterialIcons.map_outline,
+            color: colorIconos,
+          ),
+          title: Text(
+            'Mapa',
+            style: TextStyle(color: colorIconos),
+          ),
+        ),
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.info,
-              color: colorIconos,
-            ),
-            activeIcon: Icon(
-              Icons.info_outline,
-              color: colorIconos,
-            ),
-            title: Text(
-              'Informacion',
-              style: TextStyle(color: colorIconos),
-            )),
+          icon: Icon(
+            Icons.info,
+            color: colorIconos,
+          ),
+          activeIcon: Icon(
+            Icons.info_outline,
+            color: colorIconos,
+          ),
+          title: Text(
+            'Informacion',
+            style: TextStyle(color: colorIconos),
+          ),
+        ),
         BottomNavigationBarItem(
-            icon: Icon(
-              CommunityMaterialIcons.newspaper,
-              color: colorIconos,
-            ),
-            title: Text(
-              'Noticias',
-              style: TextStyle(color: colorIconos),
-            )),
+          icon: Icon(
+            CommunityMaterialIcons.newspaper,
+            color: colorIconos,
+          ),
+          title: Text(
+            'Noticias',
+            style: TextStyle(color: colorIconos),
+          ),
+        ),
       ],
       currentIndex: _indexElegido,
       fixedColor: colorIconos,
@@ -169,13 +168,13 @@ class _SistemaScreenState extends State<SistemaScreen> {
     switch (opcion) {
       case 0:
         return LineasEstacionesWidget(
-          sistema: sistemas[idSistema],
+          sistema: sistema,
         );
         break;
       case 1:
         return PhotoView(
           backgroundDecoration: BoxDecoration(color: Colors.white),
-          imageProvider: AssetImage(sistemas[idSistema].mapa),
+          imageProvider: AssetImage(sistema.mapa),
           minScale: 0.160,
           maxScale: 0.99,
         );

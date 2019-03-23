@@ -27,13 +27,14 @@ class SplashScreenState extends State<SplashScreen> {
 
   afterLoading() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => SistemaScreen(0, sistemas)));
+      MaterialPageRoute(
+        builder: (context) => SistemaScreen(sistemas, sistemas[0]),
+      ),
+    );
   }
 
   @override
-  Widget build(BuildContext context) => splashAnimation();
-
-  Widget splashAnimation() {
+  Widget build(BuildContext context) {
     double altura = MediaQuery.of(context).size.height / 3;
     double ancho = MediaQuery.of(context).size.width;
 
