@@ -49,18 +49,19 @@ class EstacionScreen extends StatelessWidget {
         children: <Widget>[
           //Mapa con pin de la estacion
           Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 3,
-              child: mapa),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 3,
+            child: mapa,
+          ),
           Expanded(
             child: PageView.builder(
               controller: pageController,
               onPageChanged: (index) {
+                Estacion estacion = linea.estaciones[index];
                 mapa.actualizarCoordenadas(
-                  linea.estaciones[index].ubiGeo,
+                  estacion.ubiGeo,
                 );
-                shareText = changeShareText(linea.estaciones[index]);
-                print(linea.estaciones[index]);
+                shareText = changeShareText(estacion);
               },
               itemCount: linea.estaciones.length,
               itemBuilder: (context, index) {
