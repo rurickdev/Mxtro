@@ -13,7 +13,7 @@ class MapaLinea extends StatelessWidget {
     this.estacion,
   });
 
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
   static double mapZoom;
 
   @override

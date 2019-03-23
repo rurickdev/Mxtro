@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/news_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -12,7 +11,6 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: Container(
         //ToDo: Crear los widgets de los ajustes
-        //child: NewsWidget(),
         margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         child: ListView(
           children: <Widget>[
