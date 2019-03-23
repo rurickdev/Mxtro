@@ -7,7 +7,7 @@ class HeaderDrawerWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('graphics/fondo_copilco_4.jpg'),
+          image: AssetImage('graphics/header_background.jpg'),
           fit: BoxFit.cover,
         ),
       ),
