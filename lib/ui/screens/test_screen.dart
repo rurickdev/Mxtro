@@ -40,18 +40,6 @@ class TestScreen extends StatelessWidget {
           zoom: 11,
         ),
         markers: listarMarcadores(),
-        // onMapCreated: (GoogleMapController controller) {
-        //   for (var linea in sistema.listaLineas) {
-        //     for (var estacion in linea.estaciones) {
-        //       controller.addMarker(
-        //         MarkerOptions(
-        //           position: estacion.ubiGeo,
-        //           icon: BitmapDescriptor.fromAsset(estacion.simbolo),
-        //         ),
-        //       );
-        //     }
-        //   }
-        // },
       ),
     );
   }

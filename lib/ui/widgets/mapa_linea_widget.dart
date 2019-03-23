@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../models/linea.dart';
@@ -12,7 +13,7 @@ class MapaLinea extends StatelessWidget {
     this.estacion,
   });
 
-  static GoogleMapController mapController;
+  Completer<GoogleMapController> _controller = Completer();
   static double mapZoom;
 
   @override
@@ -36,12 +37,6 @@ class MapaLinea extends StatelessWidget {
             position: estacion.ubiGeo,
           ),
         );
-        // controller.addMarker(
-        //   MarkerOptions(
-        //     position: estacion.ubiGeo,
-        //     icon: BitmapDescriptor.sfromAsset(estacion.simbolo),
-        //   ),
-        // );
       }
       return marcadores;
     }
@@ -53,15 +48,22 @@ class MapaLinea extends StatelessWidget {
           zoom: mapZoom,
         ),
         markers: listarMarcadores(),
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
       ),
     );
   }
 
-  //Actualiza la posicion de la camara del mapa respecto a las coordenadas de la nueva estacion
-  actualizarCoordenadas(LatLng coordenadas) {
-    mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-      target: coordenadas,
-      zoom: mapZoom,
-    )));
+  Future<void> actualizarCoordenadas(LatLng coordenadas) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: coordenadas,
+          zoom: mapZoom,
+        ),
+      ),
+    );
   }
 }
