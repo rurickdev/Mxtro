@@ -63,18 +63,28 @@ class EstacionWidget extends StatelessWidget {
             },
           );
         },
-        child: Image.asset(estacion.simbolo),
+        child: tieneImagen(),
       ),
     );
   }
 
+  Widget tieneImagen() {
+    //ToDo: Cambiarlo por algo mas generico
+    if (estacion.simbolo.contains('metro')) {
+      return Image.asset(estacion.simbolo);
+    }
+    return Image.asset('graphics/imagenes_estaciones/sin_icono_estacion.png');
+  }
+
   navigateToEstacionScreen(context) {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => EstacionScreen(
-                  estacion: estacion,
-                  linea: estacion.linea,
-                )));
+      context,
+      MaterialPageRoute(
+        builder: (context) => EstacionScreen(
+              estacion: estacion,
+              linea: estacion.linea,
+            ),
+      ),
+    );
   }
 }
