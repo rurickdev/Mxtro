@@ -70,6 +70,7 @@ class EstacionWidget extends StatelessWidget {
 
   Widget tieneImagen() {
     //ToDo: Cambiarlo por algo mas generico
+    //!CODIGO ESPAGUETI A REMOVER
     if (estacion.simbolo.contains('metro')) {
       return Image.asset(estacion.simbolo);
     }
