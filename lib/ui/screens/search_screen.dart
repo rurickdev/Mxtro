@@ -33,26 +33,39 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             onChanged: (busqueda) {
               setState(() {
-                if (busqueda.isNotEmpty) {
+                nombresFiltrados.clear();
+                String nombreBuscado = busqueda.toLowerCase();
+                if (nombreBuscado.isNotEmpty) {
                   noHayBusqueda = false;
-                  nombresFiltrados.clear();
                   for (var estacion in widget.estaciones) {
-                    if (estacion.nombre
-                            .toLowerCase()
-                            .replaceAll('á', 'a')
-                            .replaceAll('é', 'e')
-                            .replaceAll('í', 'i')
-                            .replaceAll('ó', 'o')
-                            .replaceAll('ú', 'u')
-                            .contains(busqueda.toLowerCase()) ||
-                        estacion.nombre
-                            .toLowerCase()
-                            .contains(busqueda.toLowerCase())) {
+                    String nombre = estacion.nombre.toLowerCase();
+                    if (nombre.replaceAllMapped(RegExp(r'([áéíóú])'),
+                            (Match m) {
+                          switch (m[0]) {
+                            case 'á':
+                              return 'a';
+                              break;
+                            case 'é':
+                              return 'e';
+                              break;
+                            case 'í':
+                              return 'i';
+                              break;
+                            case 'ó':
+                              return 'o';
+                              break;
+                            case 'ú':
+                              return 'u';
+                              break;
+                            default:
+                          }
+                        }).contains(nombreBuscado) ||
+                        nombre.contains(nombreBuscado)) {
                       nombresFiltrados.add(estacion);
                     }
                   }
                 } else {
-                  nombresFiltrados.clear();
+                  //nombresFiltrados.clear();
                   noHayBusqueda = true;
                 }
               });
