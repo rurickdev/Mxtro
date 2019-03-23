@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../models/sistema.dart';
 import 'mensaje_con_icono_widget.dart';
 import 'linea_widget.dart';
+import 'estacion_widget.dart';
 
 class LineasEstacionesWidget extends StatelessWidget {
   final Sistema sistema;
@@ -41,30 +42,31 @@ class LineasEstacionesWidget extends StatelessWidget {
 class TwoLinesOrLess extends StatelessWidget {
   final Sistema sistema;
 
-  TwoLinesOrLess({@required this.sistema});
+  TwoLinesOrLess({
+    @required this.sistema,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      padding: EdgeInsets.only(top: 20),
-      crossAxisCount: 3,
-      children: List.generate(
-        sistema.listaLineas[0].estaciones.length,
-        (index) {
-          return InkWell(
-            onTap: () {},
-            child: Column(
-              children: <Widget>[
-                Image.asset(
-                  'graphics/sin_icono_estacion.png',
-                  height: 70,
-                ),
-                Text(sistema.listaLineas[0].estaciones[index].nombre)
-              ],
-            ),
-          );
-        },
+    return GridView.builder(
+      padding: EdgeInsets.all(8.0),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 0.9,
+        mainAxisSpacing: 16.0,
+        crossAxisSpacing: 16.0,
       ),
+      itemCount: sistema.listaLineas[0].estaciones.length,
+      itemBuilder: (context, index) {
+        return Column(
+          children: <Widget>[
+            EstacionWidget(
+              sistema.listaLineas[0].estaciones[index],
+            ),
+            Text(sistema.listaLineas[0].estaciones[index].nombre),
+          ],
+        );
+      },
     );
   }
 }
