@@ -34,19 +34,22 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) => splashAnimation();
 
   Widget splashAnimation() {
+    double altura = MediaQuery.of(context).size.height / 3;
+    double ancho = MediaQuery.of(context).size.width;
+
     return Container(
       color: Colors.white,
-      width: MediaQuery.of(context).size.width,
+      width: ancho,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height / 3,
+            height: altura,
             //child: RaisedButton(onPressed: afterLoading),
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 3,
+            height: altura,
             child: Icon(
               Icons.train,
               color: Colors.deepOrange,
@@ -54,8 +57,8 @@ class SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 3,
-            width: MediaQuery.of(context).size.width,
+            height: altura,
+            //width: MediaQuery.of(context).size.width,
             child: FlareActor(
               'assets/animaciones/train.flr',
               animation: 'MoveTrain',
