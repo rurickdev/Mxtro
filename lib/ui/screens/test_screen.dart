@@ -2,11 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../models/sistema.dart';
 
-class TestScreen extends StatelessWidget{
-
+class TestScreen extends StatelessWidget {
   final Sistema sistema;
 
-  TestScreen({this.sistema});
+  TestScreen({
+    this.sistema,
+  });
+
+  Set<Marker> listarMarcadores() {
+    Set<Marker> marcadores = {};
+
+    for (var linea in sistema.listaLineas) {
+      for (var estacion in linea.estaciones) {
+        marcadores.add(
+          Marker(
+            markerId: MarkerId(estacion.nombre),
+            icon: BitmapDescriptor.fromAsset(estacion.simbolo),
+            position: estacion.ubiGeo,
+          ),
+        );
+      }
+    }
+
+    return marcadores;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,26 +35,24 @@ class TestScreen extends StatelessWidget{
         title: Text('Funciones Beta'),
       ),
       body: GoogleMap(
-        options: GoogleMapOptions(
-          cameraPosition: CameraPosition(
-              target: LatLng(19.4257912, -99.132911),
-              zoom: 11
-          ),
+        initialCameraPosition: CameraPosition(
+          target: LatLng(19.4257912, -99.132911),
+          zoom: 11,
         ),
-        onMapCreated: (GoogleMapController controller) {
-          for (var linea in sistema.listaLineas){
-            for (var estacion in linea.estaciones){
-              controller.addMarker(
-                MarkerOptions(
-                  position: estacion.ubiGeo,
-                  icon: BitmapDescriptor.fromAsset(estacion.simbolo),
-                ),
-              );
-            }
-          }
-        },
+        markers: listarMarcadores(),
+        // onMapCreated: (GoogleMapController controller) {
+        //   for (var linea in sistema.listaLineas) {
+        //     for (var estacion in linea.estaciones) {
+        //       controller.addMarker(
+        //         MarkerOptions(
+        //           position: estacion.ubiGeo,
+        //           icon: BitmapDescriptor.fromAsset(estacion.simbolo),
+        //         ),
+        //       );
+        //     }
+        //   }
+        // },
       ),
     );
   }
-
 }

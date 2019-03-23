@@ -25,26 +25,34 @@ class MapaLinea extends StatelessWidget {
       coordenadas = estacion.ubiGeo;
     }
 
+    Set<Marker> listarMarcadores() {
+      Set<Marker> marcadores = {};
+
+      for (var estacion in linea.estaciones) {
+        marcadores.add(
+          Marker(
+            markerId: MarkerId(estacion.nombre),
+            icon: BitmapDescriptor.fromAsset(estacion.simbolo),
+            position: estacion.ubiGeo,
+          ),
+        );
+        // controller.addMarker(
+        //   MarkerOptions(
+        //     position: estacion.ubiGeo,
+        //     icon: BitmapDescriptor.sfromAsset(estacion.simbolo),
+        //   ),
+        // );
+      }
+      return marcadores;
+    }
+
     return Container(
       child: GoogleMap(
-        options: GoogleMapOptions(
-          cameraPosition: CameraPosition(
-            target: coordenadas,
-            zoom: mapZoom,
-          ),
+        initialCameraPosition: CameraPosition(
+          target: coordenadas,
+          zoom: mapZoom,
         ),
-        onMapCreated: (GoogleMapController controller) {
-          mapController = controller;
-          actualizarCoordenadas(coordenadas);
-          for (var estacion in linea.estaciones) {
-            mapController.addMarker(
-              MarkerOptions(
-                position: estacion.ubiGeo,
-                icon: BitmapDescriptor.fromAsset(estacion.simbolo),
-              ),
-            );
-          }
-        },
+        markers: listarMarcadores(),
       ),
     );
   }
