@@ -5,10 +5,10 @@ import '../../screens/settings_screen.dart';
 import 'header_drawer_widget.dart';
 import 'lista_sistemas_drawer_widget.dart';
 
-class MiDrawerWidget extends StatelessWidget {
+class DrawerWidget extends StatelessWidget {
   final List<Sistema> sistemas;
 
-  MiDrawerWidget(this.sistemas);
+  DrawerWidget(this.sistemas);
 
   @override
   Widget build(BuildContext context) {
