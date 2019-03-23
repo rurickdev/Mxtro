@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import '../../models/sistema.dart';
 import '../screens/sistema_screen.dart';
 import '../screens/about_screen.dart';
@@ -16,9 +17,21 @@ class MiDrawerWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           //ToDo: Cambiar esta imagen por una animacion propia
-          Image(
-              image: AssetImage('graphics/iconos_interfaz/drawer_pic.jpg'),
-              fit: BoxFit.fitWidth),
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Image(
+                  image: AssetImage('graphics/iconos_interfaz/drawer_pic.jpg'),
+                  fit: BoxFit.fitWidth,
+                ),
+                FlareActor(
+                  'assets/animaciones/train.flr',
+                  animation: 'MoveTrain',
+                  fit: BoxFit.fitHeight,
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.only(top: 0),
@@ -33,10 +46,11 @@ class MiDrawerWidget extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                SistemaScreen(index, sistemas)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SistemaScreen(index, sistemas),
+                      ),
+                    );
                   },
                 );
               },
