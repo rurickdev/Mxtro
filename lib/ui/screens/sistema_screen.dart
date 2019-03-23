@@ -19,7 +19,7 @@ import '../../models/sistema.dart';
 import '../../models/superestacion.dart';
 import '../widgets/system_info_widget.dart';
 import '../widgets/lineas_estaciones_widget.dart';
-import '../widgets/mi_drawer_widget.dart';
+import '../widgets/drawer/mi_drawer_widget.dart';
 import '../widgets/mi_app_bar_widget.dart';
 import '../widgets/news_widget.dart';
 
