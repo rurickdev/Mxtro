@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../widgets/drawer/header_drawer_widget.dart';
 //ToDo: Remover esta libreria en el release
 import 'package:flutter_lorem/flutter_lorem.dart';
 
@@ -69,14 +70,7 @@ class DevInfoCard extends StatelessWidget {
             child: Card(
               child: Column(
                 children: <Widget>[
-                  Container(
-                    //height: MediaQuery.of(context).size.height / 4,
-                    //width: MediaQuery.of(context).size.width,
-                    child: Image.asset(
-                      'graphics/iconos_interfaz/drawer_pic.jpg',
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
+                  HeaderDrawerWidget(),
                   SizedBox(
                     height: 10,
                   ),
