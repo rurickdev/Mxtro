@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../models/estacion.dart';
-import 'estacion_widget.dart';
 import 'estacion_info_widget.dart';
 
 class EstacionPagina extends StatelessWidget {
