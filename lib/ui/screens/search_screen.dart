@@ -65,7 +65,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     }
                   }
                 } else {
-                  //nombresFiltrados.clear();
                   noHayBusqueda = true;
                 }
               });
