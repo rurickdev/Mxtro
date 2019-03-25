@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 import '../../../models/sistema.dart';
 import '../../screens/about_screen.dart';
 import '../../screens/settings_screen.dart';
@@ -24,13 +25,19 @@ class DrawerWidget extends StatelessWidget {
           Divider(),
           ListTile(
             title: Text('Acerca de'),
-            leading: Icon(Icons.info),
+            leading: Icon(
+              CommunityMaterialIcons.information_outline,
+              color: Colors.black,
+            ),
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => AboutScreen())),
           ),
           ListTile(
             title: Text('Ajustes'),
-            leading: Icon(Icons.settings),
+            leading: Icon(
+              CommunityMaterialIcons.settings_outline,
+              color: Colors.black,
+            ),
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => SettingsScreen())),
           ),
