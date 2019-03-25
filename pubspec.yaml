@@ -79,6 +79,7 @@ flutter:
     - graphics/iconos_switchs/
     - graphics/sistemas/
     - graphics/sistemas/mapas/
+    # Imagenes Metro
     - graphics/imagenes_estaciones/metro/
     - graphics/imagenes_estaciones/metro/linea_a/
     - graphics/imagenes_estaciones/metro/linea_b/
@@ -93,6 +94,12 @@ flutter:
     - graphics/imagenes_estaciones/metro/linea_9/
     - graphics/imagenes_estaciones/metro/linea_12/
     - graphics/imagenes_estaciones/metro/transbordos/
+    # Imagenes Tren Ligero
+    - graphics/imagenes_estaciones/trenligero/linea_1/
+    - graphics/imagenes_estaciones/trenligero/transbordos/
+    # Imagenes Tren Suburbano
+    - graphics/imagenes_estaciones/suburbano/linea_1/
+    - graphics/imagenes_estaciones/suburbano/transbordos/
     # Base de Datos
     - assets/metro.db
     #animaciones
