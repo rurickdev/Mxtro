@@ -63,7 +63,8 @@ class EstacionWidget extends StatelessWidget {
             },
           );
         },
-        child: tieneImagen(),
+        child: Image.asset(estacion.simbolo),
+        //child: tieneImagen(),
       ),
     );
   }

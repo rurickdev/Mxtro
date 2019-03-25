@@ -18,7 +18,7 @@ class LineasEstacionesWidget extends StatelessWidget {
         return NoDataBaseInfoFound();
         break;
       case 1:
-        return TwoLinesOrLess(
+        return OneLine(
           sistema: sistema,
         );
         break;
@@ -39,10 +39,10 @@ class LineasEstacionesWidget extends StatelessWidget {
 }
 
 //Widget para mostrar sistemas con pocas lineas
-class TwoLinesOrLess extends StatelessWidget {
+class OneLine extends StatelessWidget {
   final Sistema sistema;
 
-  TwoLinesOrLess({
+  OneLine({
     @required this.sistema,
   });
 
