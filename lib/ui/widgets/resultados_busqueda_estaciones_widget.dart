@@ -8,20 +8,26 @@ import '../widgets/estacion_info_widget.dart';
 class ResultadosBusqueda extends StatelessWidget {
   final bool noHayBusqueda;
   final List<SuperEstacion> nombresFiltrados;
+  final String heroTag;
 
-  ResultadosBusqueda(
-      {@required this.noHayBusqueda, @required this.nombresFiltrados});
+  ResultadosBusqueda({
+    @required this.noHayBusqueda,
+    @required this.nombresFiltrados,
+    @required this.heroTag,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (noHayBusqueda) {
       return MensajeConIcono(
+          heroTag: heroTag,
           icono: CommunityMaterialIcons.map_search_outline,
           mensaje: 'Solo Escribe el Nombre de la Estacion');
     } else {
       // Si no hay resultados muestra un icono y un mensaje indicando que no hubo resultados
       if (nombresFiltrados.isEmpty) {
         return MensajeConIcono(
+            heroTag: heroTag,
             icono: CommunityMaterialIcons.emoticon_sad,
             mensaje:
                 'Lo sentimos, no pudimos encontrar la estacion que buscas');

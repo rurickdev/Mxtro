@@ -4,8 +4,12 @@ import '../widgets/resultados_busqueda_estaciones_widget.dart';
 
 class SearchScreen extends StatefulWidget {
   final List<SuperEstacion> estaciones;
+  final String heroTag;
 
-  SearchScreen({this.estaciones});
+  SearchScreen({
+    this.estaciones,
+    this.heroTag,
+  });
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -71,6 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
             }),
       ),
       body: ResultadosBusqueda(
+        heroTag: widget.heroTag,
         noHayBusqueda: noHayBusqueda,
         nombresFiltrados: nombresFiltrados,
       ),

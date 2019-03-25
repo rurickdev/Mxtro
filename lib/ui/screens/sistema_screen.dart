@@ -107,6 +107,10 @@ class _SistemaScreenState extends State<SistemaScreen> {
         BottomNavigationBarItem(
           icon: Icon(
             MetroAppFont.icon_bottombar_estaciones,
+            color: Colors.black,
+          ),
+          activeIcon: Icon(
+            MetroAppFont.icon_bottombar_estaciones,
             color: colorIconos,
           ),
           title: Text(
@@ -116,11 +120,11 @@ class _SistemaScreenState extends State<SistemaScreen> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            CommunityMaterialIcons.map,
-            color: colorIconos,
+            CommunityMaterialIcons.map_outline,
+            color: Colors.black,
           ),
           activeIcon: Icon(
-            CommunityMaterialIcons.map_outline,
+            CommunityMaterialIcons.map,
             color: colorIconos,
           ),
           title: Text(
@@ -130,11 +134,11 @@ class _SistemaScreenState extends State<SistemaScreen> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.info,
-            color: colorIconos,
+            Icons.info_outline,
+            color: Colors.black,
           ),
           activeIcon: Icon(
-            Icons.info_outline,
+            Icons.info,
             color: colorIconos,
           ),
           title: Text(
@@ -144,6 +148,10 @@ class _SistemaScreenState extends State<SistemaScreen> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
+            CommunityMaterialIcons.newspaper,
+            color: Colors.black,
+          ),
+          activeIcon: Icon(
             CommunityMaterialIcons.newspaper,
             color: colorIconos,
           ),
@@ -180,9 +188,11 @@ class _SistemaScreenState extends State<SistemaScreen> {
         );
         break;
       case 2:
+        //ToDo: este Widget debe recibir un [Sistema] para mostrar la info de dicho sistema
         return SystemInfo();
         break;
       case 3:
+        //ToDo: este widget debe recibir el [TwitterUser] del sistema para mostrar su feed
         return NewsWidget();
         break;
       default:

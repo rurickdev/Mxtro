@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class MensajeConIcono extends StatelessWidget {
   final IconData icono;
   final String mensaje;
+  final String heroTag;
 
   MensajeConIcono({
     @required this.icono,
     @required this.mensaje,
+    this.heroTag = '',
   });
 
   @override
@@ -18,7 +20,7 @@ class MensajeConIcono extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Hero(
-              tag: 'BotonBuscar',
+              tag: heroTag,
               child: Icon(
                 icono,
                 size: 100,

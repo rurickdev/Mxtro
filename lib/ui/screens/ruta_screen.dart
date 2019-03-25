@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-/*import 'package:community_material_icon/community_material_icon.dart';
-import '../../models/superestacion.dart';
-import '../screens/estacion_screen.dart';*/
-import '../widgets/news_widget.dart';
+import 'package:community_material_icon/community_material_icon.dart';
+import '../widgets/mensaje_con_icono_widget.dart';
 
-class RutaScreen extends StatelessWidget{
+class RutaScreen extends StatelessWidget {
+  final String heroTag;
+
+  RutaScreen({
+    this.heroTag,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +16,11 @@ class RutaScreen extends StatelessWidget{
         automaticallyImplyLeading: true,
         title: Text('Buscar Ruta'),
       ),
-      body: NewsWidget(),
+      body: MensajeConIcono(
+        heroTag: heroTag,
+        icono: CommunityMaterialIcons.emoticon_sad,
+        mensaje: 'Esta caracteristica aun no esta disponible',
+      ),
     );
   }
-
 }

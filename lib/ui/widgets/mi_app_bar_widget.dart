@@ -32,8 +32,10 @@ class BotonBuscar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String tag = 'Boton Buscar';
+
     return Hero(
-      tag: 'BotonBuscar',
+      tag: tag,
       child: Material(
         color: Colors.transparent,
         child: IconButton(
@@ -41,11 +43,14 @@ class BotonBuscar extends StatelessWidget {
             CommunityMaterialIcons.map_search_outline,
           ),
           onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
+                context,
+                MaterialPageRoute(
                   builder: (context) => SearchScreen(
                         estaciones: estaciones,
-                      ))),
+                        heroTag: tag,
+                      ),
+                ),
+              ),
           //Todo: Traducir este texto
           tooltip: 'Buscar Estacion',
         ),
@@ -57,12 +62,25 @@ class BotonBuscar extends StatelessWidget {
 class BotonRuta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(MetroAppFont.icon_actionbar_ruta),
-      onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => RutaScreen())),
-      //Todo: Traducir este texto
-      tooltip: 'Generar Ruta',
+    String tag = 'Boton Ruta';
+    return Hero(
+      tag: tag,
+      child: Material(
+        color: Colors.transparent,
+        child: IconButton(
+          icon: Icon(MetroAppFont.icon_actionbar_ruta),
+          onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RutaScreen(
+                        heroTag: tag,
+                      ),
+                ),
+              ),
+          //Todo: Traducir este texto
+          tooltip: 'Generar Ruta',
+        ),
+      ),
     );
   }
 }
@@ -77,11 +95,13 @@ class BotonTest extends StatelessWidget {
     return IconButton(
       icon: Icon(CommunityMaterialIcons.test_tube),
       onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
+            context,
+            MaterialPageRoute(
               builder: (context) => TestScreen(
                     sistema: sistema,
-                  ))),
+                  ),
+            ),
+          ),
       //Todo: Traducir este texto
       tooltip: 'Funcion Experimental',
     );
