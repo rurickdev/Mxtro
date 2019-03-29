@@ -68,7 +68,8 @@ class BotonRuta extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: IconButton(
-          icon: Icon(MetroAppFont.icon_actionbar_ruta),
+          icon: Icon(CommunityMaterialIcons.transit_connection_variant),
+          //icon: Icon(MetroAppFont.icon_actionbar_ruta),
           onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
