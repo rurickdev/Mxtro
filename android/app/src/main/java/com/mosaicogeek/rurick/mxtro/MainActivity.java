@@ -1,4 +1,5 @@
-package com.example.mxtro;
+//package com.example.mxtro;
+package com.mosaicogeek.rurick.mxtro;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
