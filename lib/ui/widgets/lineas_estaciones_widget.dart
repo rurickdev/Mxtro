@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 import '../../models/sistema.dart';
 import 'mensaje_con_icono_widget.dart';
 import 'linea_widget.dart';
@@ -77,7 +78,7 @@ class NoDataBaseInfoFound extends StatelessWidget {
   Widget build(BuildContext context) {
     //ToDo: Este texto será traducido
     return MensajeConIcono(
-      icono: Icons.error_outline,
+      icono: CommunityMaterialIcons.database_remove,
       mensaje: 'No hay Estaciones en la DataBase aun',
     );
   }
