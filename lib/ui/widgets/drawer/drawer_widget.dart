@@ -38,8 +38,12 @@ class DrawerWidget extends StatelessWidget {
               CommunityMaterialIcons.settings_outline,
               color: Colors.black,
             ),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SettingsScreen())),
+            onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsScreen(sistemas),
+                  ),
+                ),
           ),
         ],
       ),
