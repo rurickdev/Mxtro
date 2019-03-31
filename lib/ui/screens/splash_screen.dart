@@ -5,28 +5,23 @@ import '../../utils/cargador_listas.dart';
 import '../../models/sistema.dart';
 import 'sistema_screen.dart';
 
-class SplashScreen extends StatefulWidget {
-  @override
-  SplashScreenState createState() => SplashScreenState();
-}
+class SplashScreen extends StatelessWidget {
+  final CargadorListas cargador = CargadorListas();
 
-class SplashScreenState extends State<SplashScreen> {
-  CargadorListas cargador = CargadorListas();
-  List<Sistema> sistemas;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 5, milliseconds: 200), loadDB);
+  loadDB(context) {
+    Timer(
+      Duration(seconds: 5),
+      () async {
+        List<Sistema> sistemas;
+        sistemas = await cargador.cargarListas();
+        await afterLoading(context, sistemas);
+      },
+    );
   }
 
-  loadDB() async {
-    sistemas = await cargador.cargarListas();
-    await afterLoading();
-  }
-
-  afterLoading() {
-    Navigator.of(context).pushReplacement(
+  afterLoading(context, List<Sistema> sistemas) {
+    Navigator.pushReplacement(
+      context,
       MaterialPageRoute(
         builder: (context) => SistemaScreen(sistemas, sistemas[0]),
       ),
@@ -37,6 +32,10 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     double altura = MediaQuery.of(context).size.height / 3;
     double ancho = MediaQuery.of(context).size.width;
+
+    loadDB(context);
+    //Future.delayed(Duration(seconds: 5, milliseconds: 200), loadDB(context));
+    //Timer(Duration(seconds: 5, milliseconds: 200), loadDB(context));
 
     return Container(
       color: Colors.white,
