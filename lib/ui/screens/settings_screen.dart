@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 import '../../models/sistema.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -133,10 +134,12 @@ class Mapa extends StatelessWidget {
                 children: <Widget>[
                   ListTile(
                     title: Text('Google Map'),
+                    leading: Icon(CommunityMaterialIcons.google_maps),
                     onTap: Navigator.of(context).pop,
                   ),
                   ListTile(
                     title: Text('Croquis Oficial'),
+                    leading: Icon(CommunityMaterialIcons.map_legend),
                     onTap: Navigator.of(context).pop,
                   ),
                 ],
