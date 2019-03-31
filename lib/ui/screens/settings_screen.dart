@@ -15,7 +15,6 @@ class SettingsScreen extends StatelessWidget {
         title: Text('Ajustes'),
       ),
       body: Container(
-        //ToDo: Crear los widgets de los ajustes
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
           children: <Widget>[
@@ -168,14 +167,23 @@ class Tema extends StatelessWidget {
                   ListTile(
                     title: Text('Claro'),
                     onTap: Navigator.of(context).pop,
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.white,
+                    ),
                   ),
                   ListTile(
                     title: Text('Oscuro'),
                     onTap: Navigator.of(context).pop,
+                    leading: CircleAvatar(
+                      backgroundColor: Color(0xFF2c3e50),
+                    ),
                   ),
                   ListTile(
                     title: Text('Negro'),
                     onTap: Navigator.of(context).pop,
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                    ),
                   ),
                 ],
               ),

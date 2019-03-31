@@ -24,27 +24,35 @@ class DrawerWidget extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Acerca de'),
-            leading: Icon(
-              CommunityMaterialIcons.information_outline,
-              color: Colors.black,
-            ),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AboutScreen())),
-          ),
+              title: Text('Acerca de'),
+              leading: Icon(
+                CommunityMaterialIcons.information_outline,
+                color: Colors.black,
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AboutScreen(),
+                  ),
+                );
+              }),
           ListTile(
-            title: Text('Ajustes'),
-            leading: Icon(
-              CommunityMaterialIcons.settings_outline,
-              color: Colors.black,
-            ),
-            onTap: () => Navigator.push(
+              title: Text('Ajustes'),
+              leading: Icon(
+                CommunityMaterialIcons.settings_outline,
+                color: Colors.black,
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => SettingsScreen(sistemas),
                   ),
-                ),
-          ),
+                );
+              }),
         ],
       ),
     );
