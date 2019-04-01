@@ -15,10 +15,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Metro App',
+      // navigatorKey: navigatorKey,
+      title: 'MxTro',
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
