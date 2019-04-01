@@ -34,8 +34,6 @@ class SplashScreen extends StatelessWidget {
     double ancho = MediaQuery.of(context).size.width;
 
     loadDB(context);
-    //Future.delayed(Duration(seconds: 5, milliseconds: 200), loadDB(context));
-    //Timer(Duration(seconds: 5, milliseconds: 200), loadDB(context));
 
     return Container(
       color: Colors.white,
