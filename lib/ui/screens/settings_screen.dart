@@ -78,10 +78,16 @@ class SistemaFavorito extends StatelessWidget {
 class AccionesRapidas extends StatelessWidget {
   final List<Sistema> sistemas;
 
+  final List<bool> valoresSwitches = [];
+
   AccionesRapidas(this.sistemas);
 
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < sistemas.length; i++) {
+      valoresSwitches.add(false);
+    }
+
     return ListTile(
       title: Text('Acciones Rapidas'),
       subtitle: Text(
@@ -103,8 +109,10 @@ class AccionesRapidas extends StatelessWidget {
                   ),
                   //ToDo: relacionar todos los [CheckBox]
                   trailing: Checkbox(
-                    value: false,
-                    onChanged: (value) {},
+                    value: valoresSwitches[index],
+                    onChanged: (value) {
+                      valoresSwitches[index] = value;
+                    },
                   ),
                   onTap: Navigator.of(context).pop,
                 );
