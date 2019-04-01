@@ -1,55 +1,64 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
-// import 'package:quick_actions/quick_actions.dart';
 import '../../utils/cargador_listas.dart';
 import '../../models/sistema.dart';
-// import '../../main.dart';
 import 'sistema_screen.dart';
+
 // import 'settings_screen.dart';
+// import '../../main.dart';
+// import 'package:quick_actions/quick_actions.dart';
 
 class SplashScreen extends StatelessWidget {
   final CargadorListas cargador = CargadorListas();
   // final QuickActions quickActions = const QuickActions();
-  // int sistemaIndex = 0;
+  // int sistemaIndex;
   // List<Sistema> sistemas;
+
+  // SplashScreen(this.sistemaIndex);
 
   // createQuickActions() {
   //   var context = MyApp.navigatorKey.currentState;
   //   quickActions.initialize(
   //     (String shortcutId) {
+  //       int sisIndex;
   //       switch (shortcutId) {
   //         case 'metro':
   //           print(shortcutId);
-  //           sistemaIndex = 0;
+  //           sisIndex = 0;
   //           break;
   //         case 'metrobus':
   //           print(shortcutId);
-  //           sistemaIndex = 1;
+  //           sisIndex = 1;
   //           break;
   //         case 'trenligero':
   //           print(shortcutId);
-  //           sistemaIndex = 2;
+  //           sisIndex = 2;
   //           break;
   //         case 'pumabus':
   //           print(shortcutId);
-  //           sistemaIndex = 5;
+  //           sisIndex = 5;
   //           break;
   //         default:
   //           print(shortcutId);
   //       }
   //       print('hello from: $shortcutId');
-  //       print(context);
-  //       print(context.context);
+  //       // print(context);
+  //       // print(context.context);
   //       try {
-  //         Navigator.push(
-  //           MyApp.navigatorKey.currentContext,
-  //           MaterialPageRoute(
-  //             builder: (context) => SettingsScreen(sistemas),
+  //         runApp(
+  //           MyApp(
+  //             sisIndex: sisIndex,
   //           ),
   //         );
+  //         // Navigator.push(
+  //         //   MyApp.navigatorKey.currentContext,
+  //         //   MaterialPageRoute(
+  //         //     builder: (context) => SettingsScreen(sistemas),
+  //         //   ),
+  //         // );
   //       } catch (e) {
-  //         print(e);
+  //         print('error: ' + e);
   //       }
   //       print('bye from: $shortcutId');
   //     },
