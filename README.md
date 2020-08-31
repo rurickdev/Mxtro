@@ -1,6 +1,6 @@
-# metroapp
+# MxTro
 
-Aplicacion que permitirá visualirar las rutas de los sitemas de transporte de la CDMX
+Aplicación que permitirá visualizar las rutas de los sistemas de transporte de la CDMX
 
 ## Getting Started in Flutter
 
